@@ -26,7 +26,6 @@ export class ProductListComponent implements OnInit {
   currentPage$!: Observable<number>;
   totalPages$!: Observable<number>;
   loading$!: Observable<boolean>;
-  skeletonArray = Array(6).fill(0);
 
   constructor(private store: Store) {}
 
