@@ -1,8 +1,23 @@
+<app-filters></app-filters>
+
 @if (loading$ | async) {
   <div>Loading...</div>
 }
+
 <div class="product-grid">
-  @for (product of (products$ | async); track product) {
+  @for (product of (paginatedProducts$ | async); track product.id) {
     <app-product-card [product]="product"></app-product-card>
   }
 </div>
+
+@if ((totalPages$ | async); as totalPages) {
+  <div class="pagination">
+    @for (page of [].constructor(totalPages); track i; let i = $index) {
+      <button mat-button
+              (click)="goToPage(i + 1)"
+              [disabled]="(currentPage$ | async) === (i + 1)">
+        {{ i + 1 }}
+      </button>
+    }
+  </div>
+}

@@ -1,1 +1,11 @@
-<p>product-modal works!</p>
+<h2 mat-dialog-title>{{ product.name }}</h2>
+<mat-dialog-content>
+  <img [src]="product.imageUrl" alt="{{ product.name }}" style="width: 100%">
+  <p>{{ product.description }}</p>
+  <p>Price: ${{ product.price }}</p>
+  <p>Rating: {{ product.rating }}/5</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="addToCart()">Add to Cart</button>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

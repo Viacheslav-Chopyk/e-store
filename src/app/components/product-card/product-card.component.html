@@ -1,4 +1,4 @@
-<mat-card class="product-card">
+<mat-card class="product-card" (click)="openProductModal()">
   <img mat-card-image [src]="product.imageUrl" alt="{{ product.name }}">
   <mat-card-title>{{ product.name }}</mat-card-title>
   <mat-card-content>

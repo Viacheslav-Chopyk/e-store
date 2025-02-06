@@ -1,0 +1,25 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  button {
+    min-width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #1976d2;
+    color: white;
+
+    &:disabled {
+      background-color: #90caf9;
+      cursor: default;
+    }
+  }
+}

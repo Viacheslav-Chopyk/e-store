@@ -3,17 +3,22 @@ import { ProductsState } from './products.reducer';
 
 export const selectProductsState = createFeatureSelector<ProductsState>('products');
 
-export const selectAllProducts = createSelector(
+export const selectPaginatedProducts = createSelector(
   selectProductsState,
-  (state) => state.products
+  (state) => state.paginatedProducts
+);
+
+export const selectCurrentPage = createSelector(
+  selectProductsState,
+  (state) => state.currentPage
+);
+
+export const selectTotalPages = createSelector(
+  selectProductsState,
+  (state) => Math.ceil(state.filteredProducts.length / state.itemsPerPage)
 );
 
 export const selectLoading = createSelector(
   selectProductsState,
   (state) => state.loading
-);
-
-export const selectError = createSelector(
-  selectProductsState,
-  (state) => state.error
 );
