@@ -7,6 +7,7 @@ import {MatIcon} from '@angular/material/icon';
 import {RouterLink} from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import {MatIconButton} from '@angular/material/button';
+import {MatBadge} from '@angular/material/badge';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,8 @@ import {MatIconButton} from '@angular/material/button';
     MatIcon,
     RouterLink,
     AsyncPipe,
-    MatIconButton
+    MatIconButton,
+    MatBadge
   ],
   styleUrls: ['./header.component.scss']
 })

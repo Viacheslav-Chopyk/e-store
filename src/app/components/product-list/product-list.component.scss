@@ -1,25 +1,16 @@
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 
-  button {
-    min-width: 40px;
-    height: 40px;
-    border-radius: 4px;
-    background-color: #1976d2;
-    color: white;
-
-    &:disabled {
-      background-color: #90caf9;
-      cursor: default;
-    }
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 }

@@ -9,6 +9,7 @@ import { AsyncPipe } from "@angular/common";
 import {FiltersComponent} from "../filters/filters.component";
 import {MatButton} from "@angular/material/button";
 
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -16,8 +17,8 @@ import {MatButton} from "@angular/material/button";
     ProductCardComponent,
     AsyncPipe,
     FiltersComponent,
-    MatButton
-],
+    MatButton,
+  ],
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
@@ -25,6 +26,7 @@ export class ProductListComponent implements OnInit {
   currentPage$!: Observable<number>;
   totalPages$!: Observable<number>;
   loading$!: Observable<boolean>;
+  skeletonArray = Array(6).fill(0);
 
   constructor(private store: Store) {}
 

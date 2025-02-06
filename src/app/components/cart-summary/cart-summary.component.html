@@ -1,7 +1,7 @@
 <h1>Shopping Cart</h1>
 @for (item of (items$ | async); track item) {
   <div>
-    <img [src]="item.product.imageUrl" width="100" alt="{{ item.product.name }}">
+    <img [src]="item.product.image" width="100" alt="{{ item.product.name }}">
     <p>{{ item.product.name }} - ${{ item.product.price }} (x{{ item.quantity }})</p>
     <button mat-button color="warn" (click)="removeItem(item.product.id)">Remove</button>
   </div>
