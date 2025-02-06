@@ -50,8 +50,8 @@ This project is a Single Page Application (SPA) for an online electronics store 
 
 ## 🚩 Development Commands
 
+- **Start JSON Server:** `npm run start:api`
 - **Run the development server:** `ng serve`
-- **Start JSON Server:** `npm run server`
 - **Build for production:** `ng build`
 - **Run unit tests:** `ng test`
 
