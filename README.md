@@ -1,59 +1,78 @@
-# ElectronicsStore
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+# 🛒 Electronics Store
 
-## Development server
+This project is a Single Page Application (SPA) for an online electronics store built with Angular 19. The application allows users to browse products, filter them by categories and price, add items to a shopping cart, and view selected items.
 
-To start a local development server, run:
+## 🚀 Features
 
-```bash
-ng serve
+- 🔍 **Product Filtering:** Search and filter products by name, category, and price.
+- 🛒 **Shopping Cart:** Add products to the cart with persistent state across sessions.
+- 📄 **Pagination:** Navigate through a large number of products using pagination.
+- ⚡ **State Management:** Reactive state management using NGRX.
+- 🎨 **UI Components:** Built with Angular Material for a modern user interface.
+
+## 🛠️ Technologies Used
+
+- **Angular 19** (using the new syntax `@if`, `@for`, `track`)
+- **NGRX** for state management
+- **Angular Material** for UI components
+- **json-server** for mock backend
+- **TypeScript** for strong typing
+
+## 📦 Installation & Setup
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-username/electronics-store.git
+   cd electronics-store
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the JSON server for mock data:**
+
+   ```bash
+   npm run start:api
+   ```
+
+4. **Run the development server:**
+
+   ```bash
+   ng serve
+   ```
+
+   Open your browser at [http://localhost:4200/](http://localhost:4200/).
+
+## 🚩 Development Commands
+
+- **Run the development server:** `ng serve`
+- **Start JSON Server:** `npm run server`
+- **Build for production:** `ng build`
+- **Run unit tests:** `ng test`
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── components/        # UI components (ProductCard, Filters, CartSummary)
+│   ├── services/          # API services (ProductService, CartService)
+│   ├── store/             # NGRX Store (actions, reducers, selectors)
+│   ├── models/            # TypeScript interfaces (Product, CartItem)
+│   └── app.config.ts      # Configuration for NGRX and routing
+└── assets/                # Static files (images)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 💡 Key Features
 
-## Code scaffolding
+- Utilizes the new Angular 19 syntax for structural directives (`@if`, `@for`, `track`).
+- Shopping cart state is persisted in `localStorage` to retain data between sessions.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📄 License
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is for educational purposes and can be used for personal projects.

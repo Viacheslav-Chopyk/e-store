@@ -1,10 +1,10 @@
 <mat-form-field appearance="fill">
-<!--  <mat-label>Search</mat-label>-->
-  <input matInput [(ngModel)]="searchText" (input)="applyFilters()" placeholder="Search products" />
+  <!--  <mat-label>Search</mat-label>-->
+  <input matInput [(ngModel)]="searchText" (input)="applyFilters()" placeholder="Search products"/>
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-<!--  <mat-label>Type</mat-label>-->
+  <!--  <mat-label>Type</mat-label>-->
   <mat-select [(ngModel)]="selectedType" (selectionChange)="applyFilters()">
     @for (type of types; track type) {
       <mat-option [value]="type">{{ type }}</mat-option>
@@ -19,8 +19,8 @@
         type="checkbox"
         [value]="price"
         (change)="togglePriceRange(price)"
-        />
-        Up to ${{ price }}
-      </label>
-    }
-  </div>
+      />
+      Up to ${{ price }}
+    </label>
+  }
+</div>
