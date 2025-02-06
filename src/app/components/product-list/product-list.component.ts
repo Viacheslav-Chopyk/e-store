@@ -46,10 +46,8 @@ export class ProductListComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent) {
-    console.log(event);
     if (event.pageSize !== this.pageSize) {
       this.pageSize = event.pageSize;
-      console.log(this.pageSize);
       this.store.dispatch(setItemsPerPage({ itemsPerPage: event.pageSize }));
     } else {
       this.store.dispatch(setPage({ page: event.pageIndex + 1 }));

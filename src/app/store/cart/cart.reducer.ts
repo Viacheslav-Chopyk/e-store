@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import {addToCart, clearCart, removeFromCart} from './cart.actions';
+import {addToCart, removeFromCart} from './cart.actions';
 import { CartItem } from '../../models/cart-item';
 
 export interface CartState {

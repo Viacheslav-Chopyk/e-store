@@ -5,7 +5,6 @@ import {
   loadProductsFailure,
   setFilters,
   setPage,
-  setItemsPerPage
 } from './products.actions';
 import { Product } from '../../models/product';
 import { FilterOptions } from '../../models/filter-options';

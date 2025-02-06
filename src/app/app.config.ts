@@ -30,7 +30,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideRouter(routes),
     provideAnimationsAsync(),
-    provideStore({ products: productsReducer, cart: cartReducer }, { metaReducers: [localStorageSyncReducer], initialState: getInitialState() }),
+    provideStore(
+      { products: productsReducer, cart: cartReducer },
+      { metaReducers: [localStorageSyncReducer], initialState: getInitialState() }
+    ),
     provideEffects([ProductsEffects]),
   ]
 };
