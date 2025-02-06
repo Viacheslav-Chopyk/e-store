@@ -1,0 +1,703 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Cupiditate excepturi",
+      "type": "Phones",
+      "price": 1858,
+      "rating": "4.4",
+      "description": "Fuga sequi temporibus similique autem iure itaque rerum nostrum. Excepturi ex velit excepturi consequatur voluptatum sit rem. Tenetur modi aut voluptatem et.",
+      "image": "https://via.placeholder.com/150?text=Product+1",
+      "reviews": [
+        "Adipisci enim et neque omnis voluptatibus error.",
+        "Atque est magnam eum eos et est quis id."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Eius natus",
+      "type": "Phones",
+      "price": 1214,
+      "rating": "1.9",
+      "description": "Aliquid quasi deleniti eaque aut. Dolorem labore tempore cupiditate ipsam dicta veritatis. Quaerat non ea.",
+      "image": "https://via.placeholder.com/150?text=Product+2",
+      "reviews": [
+        "Esse nostrum nesciunt molestiae et."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Dicta ducimus maiores",
+      "type": "TVs",
+      "price": 1087,
+      "rating": "2.4",
+      "description": "Tenetur iste aspernatur molestiae. Et neque amet quod atque iure ut. Quisquam et deserunt ut quia molestiae commodi molestiae dignissimos.",
+      "image": "https://via.placeholder.com/150?text=Product+3",
+      "reviews": [
+        "Eum pariatur perspiciatis qui mollitia natus.",
+        "Libero eum quae."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Molestiae porro",
+      "type": "Appliances",
+      "price": 456,
+      "rating": "1.8",
+      "description": "Molestiae est corporis temporibus fugiat earum harum vero deserunt dicta. Modi alias quas qui rerum quo ut aut. Autem iste doloremque ea hic vel et qui.",
+      "image": "https://via.placeholder.com/150?text=Product+4",
+      "reviews": [
+        "Ut laborum quos quaerat optio nobis delectus voluptatem.",
+        "Illo quas nesciunt corrupti aperiam accusantium ut."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Molestias est nam",
+      "type": "Appliances",
+      "price": 1640,
+      "rating": "3.7",
+      "description": "Neque quam occaecati dolorum. Rerum numquam est quam voluptatem esse. Illum perferendis officiis.",
+      "image": "https://via.placeholder.com/150?text=Product+5",
+      "reviews": [
+        "Illo accusamus exercitationem autem illo ipsum.",
+        "Ut rem et ipsa."
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Optio accusantium hic",
+      "type": "Appliances",
+      "price": 178,
+      "rating": "3.6",
+      "description": "Porro dolores esse distinctio temporibus et. Et rerum voluptas quia dolores. Veniam quos aliquid.",
+      "image": "https://via.placeholder.com/150?text=Product+6",
+      "reviews": [
+        "At id ut magnam commodi vel exercitationem molestias non.",
+        "Tenetur molestiae quia tempora facere.",
+        "Rerum rerum cum consectetur totam veritatis et aut et."
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Asperiores animi suscipit",
+      "type": "Appliances",
+      "price": 542,
+      "rating": "4.4",
+      "description": "Recusandae consequatur temporibus vel dignissimos expedita voluptatem. Enim et sint fugiat. Non eum id atque dolores corporis odit adipisci ad minus.",
+      "image": "https://via.placeholder.com/150?text=Product+7",
+      "reviews": [
+        "Tempore nobis ea aspernatur qui tenetur.",
+        "In nam amet qui quaerat odit.",
+        "Ipsa quis dolor eos eos."
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Vel quo",
+      "type": "Phones",
+      "price": 1527,
+      "rating": "2.6",
+      "description": "Ullam corporis impedit adipisci non. Quos consectetur impedit provident est. Adipisci in quibusdam fuga tempore nemo.",
+      "image": "https://via.placeholder.com/150?text=Product+8",
+      "reviews": [
+        "Hic qui est sit quia vel tempora molestias.",
+        "Quis mollitia debitis.",
+        "Pariatur eveniet quo impedit dolores quasi velit.",
+        "Omnis numquam sit laboriosam voluptatum repellat.",
+        "Quis nisi quasi corrupti sed in ipsa eum natus ipsa."
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Harum laudantium",
+      "type": "Video Games",
+      "price": 959,
+      "rating": "4.7",
+      "description": "Enim eum dolorem est voluptatum provident fuga. Totam ea consequatur tenetur odio. Praesentium voluptatem pariatur quasi officiis at sunt asperiores aut.",
+      "image": "https://via.placeholder.com/150?text=Product+9",
+      "reviews": [
+        "Et placeat dicta molestiae ratione quaerat.",
+        "Tempora et neque ut et.",
+        "Vitae quia qui aspernatur laboriosam consequuntur corporis.",
+        "Id blanditiis laborum."
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Molestias commodi officia",
+      "type": "TVs",
+      "price": 1538,
+      "rating": "1.3",
+      "description": "Sed asperiores sed aperiam. Eos vel reiciendis fugiat aspernatur officiis non deleniti rerum laborum. Nam non veritatis vel explicabo dolorem sit reprehenderit in.",
+      "image": "https://via.placeholder.com/150?text=Product+10",
+      "reviews": [
+        "Quia id sequi et.",
+        "Aut quia expedita eum porro perspiciatis maiores dolore est.",
+        "Enim eos accusamus numquam ut."
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Cupiditate non",
+      "type": "Appliances",
+      "price": 587,
+      "rating": "1.8",
+      "description": "Sapiente et magnam. Officia neque occaecati esse similique consectetur eos. Reprehenderit earum quam veritatis dolorem ipsum sit.",
+      "image": "https://via.placeholder.com/150?text=Product+11",
+      "reviews": [
+        "Voluptates occaecati voluptatum aut quaerat dolore autem quo.",
+        "Libero quia alias alias."
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Aut voluptatum aperiam",
+      "type": "Phones",
+      "price": 953,
+      "rating": "3.4",
+      "description": "Et a adipisci qui dolorem consectetur inventore. Perspiciatis rem fuga distinctio commodi minus aut laborum. Debitis consequatur provident aperiam et laborum vitae quis.",
+      "image": "https://via.placeholder.com/150?text=Product+12",
+      "reviews": [
+        "Reiciendis animi et iste sed soluta.",
+        "Et quia et qui qui."
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Similique sunt",
+      "type": "Phones",
+      "price": 1610,
+      "rating": "3.2",
+      "description": "Est et blanditiis rerum consequatur sequi. Explicabo quis porro voluptatum quaerat. Ea fuga laboriosam et non molestiae eligendi molestiae.",
+      "image": "https://via.placeholder.com/150?text=Product+13",
+      "reviews": [
+        "Earum modi molestiae deleniti est quia est.",
+        "Quia est amet quis dolor illum doloremque quisquam dolor."
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Quod rerum",
+      "type": "Video Games",
+      "price": 1357,
+      "rating": "3.1",
+      "description": "Sint quas culpa enim. Earum dolores ipsa in occaecati et quam. Dolor rerum tempore tempore eum.",
+      "image": "https://via.placeholder.com/150?text=Product+14",
+      "reviews": [
+        "Facere earum et.",
+        "Commodi facere autem at eius porro ut esse.",
+        "Voluptatibus eveniet autem at quia et."
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Cupiditate dolorum",
+      "type": "Appliances",
+      "price": 1190,
+      "rating": "2.7",
+      "description": "Qui delectus temporibus ea voluptatem et quia ut. Et commodi nobis ducimus. Temporibus dolores placeat dolorem assumenda cum qui cumque et.",
+      "image": "https://via.placeholder.com/150?text=Product+15",
+      "reviews": [
+        "Nam veniam dolorem."
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Nihil saepe",
+      "type": "TVs",
+      "price": 513,
+      "rating": "2.9",
+      "description": "Delectus ipsam aliquid eligendi quaerat. Autem dolores sunt. Facere optio tempore totam cum ut porro corrupti.",
+      "image": "https://via.placeholder.com/150?text=Product+16",
+      "reviews": [
+        "Nulla pariatur vero ipsa amet.",
+        "Fuga sit laudantium voluptatem laudantium suscipit natus est."
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Voluptatem sed",
+      "type": "Phones",
+      "price": 1088,
+      "rating": "3.9",
+      "description": "Est earum eos dolor aut rem et aut. Ut quo exercitationem quibusdam ipsam pariatur. Harum alias voluptatem magnam incidunt aut accusantium similique.",
+      "image": "https://via.placeholder.com/150?text=Product+17",
+      "reviews": [
+        "Optio dolores distinctio non necessitatibus laudantium nisi.",
+        "Porro excepturi earum ipsa hic voluptatem accusamus minus non.",
+        "Reiciendis et neque non.",
+        "Ipsum et ex quis et ratione qui."
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Aliquam omnis praesentium",
+      "type": "Video Games",
+      "price": 1646,
+      "rating": "3.0",
+      "description": "Aut aut soluta vel ullam et similique id quis. Rerum eum perspiciatis impedit. Totam autem tenetur at aspernatur atque consequatur.",
+      "image": "https://via.placeholder.com/150?text=Product+18",
+      "reviews": [
+        "Et sit quia soluta quod et adipisci.",
+        "Et aliquam amet.",
+        "Quibusdam iste magni consectetur voluptatem aperiam neque aliquid dolores."
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Maiores veniam",
+      "type": "Video Games",
+      "price": 1964,
+      "rating": "1.4",
+      "description": "Adipisci cupiditate vero qui sit. Est vero nisi dolor reiciendis quia dolores. Dicta recusandae consequatur ut cupiditate praesentium pariatur veniam rerum.",
+      "image": "https://via.placeholder.com/150?text=Product+19",
+      "reviews": [
+        "Asperiores impedit eveniet laudantium est.",
+        "Voluptate odit cupiditate sit aperiam accusantium.",
+        "Quas eaque perferendis consequatur."
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Corrupti vero",
+      "type": "TVs",
+      "price": 1123,
+      "rating": "3.8",
+      "description": "Iusto nostrum quasi in non qui quos dolores. Porro similique inventore laborum labore voluptas et possimus. Eligendi quas a vero maiores vero fugiat.",
+      "image": "https://via.placeholder.com/150?text=Product+20",
+      "reviews": [
+        "Maxime aliquam dolor quia aut omnis voluptatem.",
+        "Enim repudiandae in explicabo aut aut consectetur.",
+        "Et optio vitae consequatur velit quibusdam et voluptatem commodi.",
+        "Voluptas libero vel voluptates dolor amet quia sit deserunt ut.",
+        "Vero cupiditate atque quo."
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Voluptatem qui",
+      "type": "Phones",
+      "price": 1474,
+      "rating": "1.2",
+      "description": "Eius ex eveniet ipsam ut tempore consequatur. Sed quod nobis ullam ut. Quo impedit delectus maiores.",
+      "image": "https://via.placeholder.com/150?text=Product+21",
+      "reviews": [
+        "Cumque est in et.",
+        "Omnis nobis sint.",
+        "Quia cum in eius.",
+        "Est molestias et voluptatibus."
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Asperiores porro aspernatur",
+      "type": "Phones",
+      "price": 1963,
+      "rating": "3.8",
+      "description": "Soluta iste a ut mollitia ipsam beatae laudantium. Est ullam sed similique numquam eum natus est. Est cupiditate et quae aliquam animi est et dolorum.",
+      "image": "https://via.placeholder.com/150?text=Product+22",
+      "reviews": [
+        "Itaque et eos commodi repudiandae architecto est qui deleniti.",
+        "Rerum perspiciatis dolor molestiae eum optio sint quasi."
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Rerum eaque",
+      "type": "TVs",
+      "price": 708,
+      "rating": "4.5",
+      "description": "Voluptates nemo omnis id perspiciatis et sunt. Molestiae rem officia quia quam. Blanditiis nemo dicta veritatis dolorum est dolorem eos et.",
+      "image": "https://via.placeholder.com/150?text=Product+23",
+      "reviews": [
+        "Dolores dolorem rem qui consectetur laboriosam labore distinctio consequatur autem.",
+        "Alias ut voluptates labore totam esse magnam occaecati qui.",
+        "A doloribus aliquam et nihil quas nobis aut molestiae.",
+        "Soluta minus sint.",
+        "Accusamus alias est dolorem."
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Quibusdam facere ut",
+      "type": "Appliances",
+      "price": 1843,
+      "rating": "4.5",
+      "description": "Rerum ea enim tenetur iure assumenda non quos ipsa sit. Dignissimos assumenda commodi nostrum dolorem sed eos. Aut delectus quia harum possimus quia.",
+      "image": "https://via.placeholder.com/150?text=Product+24",
+      "reviews": [
+        "Voluptatem nihil nesciunt in totam dolorem.",
+        "Dignissimos voluptatibus commodi tempore doloremque.",
+        "Voluptatem vero nihil praesentium voluptatem nam exercitationem possimus."
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Officiis ducimus dolores",
+      "type": "Appliances",
+      "price": 833,
+      "rating": "4.1",
+      "description": "Laborum tempora distinctio similique et. Et corrupti qui. Labore magni ducimus natus voluptatum.",
+      "image": "https://via.placeholder.com/150?text=Product+25",
+      "reviews": [
+        "Expedita laboriosam eligendi dolorem voluptas eligendi omnis.",
+        "Rem qui vitae.",
+        "Iusto pariatur magni non provident."
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Nemo ut iste",
+      "type": "Phones",
+      "price": 1660,
+      "rating": "3.8",
+      "description": "Sequi quia sunt quo omnis excepturi sit. Culpa nemo quos et quo a rerum expedita sed a. Qui ipsum et expedita error esse et necessitatibus.",
+      "image": "https://via.placeholder.com/150?text=Product+26",
+      "reviews": [
+        "Ut iusto atque ad fuga vel qui illo optio.",
+        "Iusto porro impedit hic.",
+        "Nihil aut molestiae ut necessitatibus harum.",
+        "Consequatur qui sunt quis dolorem qui ratione."
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Quia eos",
+      "type": "TVs",
+      "price": 163,
+      "rating": "3.0",
+      "description": "Facere corrupti porro architecto quam quidem aliquam. Repudiandae occaecati placeat adipisci recusandae architecto voluptatem ratione incidunt. Sunt aut nihil aut sed quidem qui.",
+      "image": "https://via.placeholder.com/150?text=Product+27",
+      "reviews": [
+        "Quisquam hic omnis velit.",
+        "Quod nostrum consequuntur harum voluptatem rerum.",
+        "Voluptatem tempore tempora a ex et magni et cumque.",
+        "Aut dicta esse reprehenderit.",
+        "Vel asperiores sunt dolore minus qui."
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Adipisci libero nobis",
+      "type": "Appliances",
+      "price": 1280,
+      "rating": "4.1",
+      "description": "Explicabo commodi quis officiis aut quia optio praesentium. Ad similique qui sint laborum vel qui optio velit. Quia voluptatum et quasi est nisi sit quae.",
+      "image": "https://via.placeholder.com/150?text=Product+28",
+      "reviews": [
+        "Eaque officia suscipit molestiae qui dolor.",
+        "Consequatur laudantium sed quis libero aperiam vero.",
+        "Cumque nostrum et recusandae ut similique deleniti dolorem.",
+        "Cumque porro dicta consequatur eos unde ratione quas."
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Dolore alias",
+      "type": "TVs",
+      "price": 1111,
+      "rating": "1.9",
+      "description": "Molestias rerum quia ea error aliquam temporibus expedita. Voluptatem iure blanditiis culpa provident et suscipit. Adipisci inventore ut quia doloribus exercitationem.",
+      "image": "https://via.placeholder.com/150?text=Product+29",
+      "reviews": [
+        "Sunt enim magni delectus deleniti ullam illo nisi est.",
+        "Id nihil distinctio quibusdam tempora."
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Dignissimos iste ratione",
+      "type": "Phones",
+      "price": 612,
+      "rating": "3.9",
+      "description": "Veritatis doloribus sit reiciendis consequuntur. Ut praesentium natus eaque vel sit eaque. Voluptatem saepe esse cumque perferendis saepe consectetur corrupti.",
+      "image": "https://via.placeholder.com/150?text=Product+30",
+      "reviews": [
+        "Cumque quia aliquid fugit id.",
+        "At voluptatem quasi asperiores non aut rerum.",
+        "Harum illo ut laborum cum."
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Quia qui itaque",
+      "type": "Phones",
+      "price": 393,
+      "rating": "3.6",
+      "description": "Rerum magni quia aperiam nam omnis dolor laboriosam. Rem cupiditate sit dolorem veniam sit molestias ea sed consequatur. Qui animi assumenda et.",
+      "image": "https://via.placeholder.com/150?text=Product+31",
+      "reviews": [
+        "Dolore unde accusamus autem."
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Voluptates sint voluptatem",
+      "type": "Appliances",
+      "price": 1986,
+      "rating": "2.8",
+      "description": "Maxime commodi corrupti eos. Nulla aliquid atque dolor praesentium molestiae hic. Nihil nobis a a aut nam minima et ut.",
+      "image": "https://via.placeholder.com/150?text=Product+32",
+      "reviews": [
+        "Omnis iure maxime explicabo quos.",
+        "Amet soluta est debitis et optio qui temporibus rem."
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Aut accusantium est",
+      "type": "Phones",
+      "price": 1624,
+      "rating": "2.0",
+      "description": "Ipsum rerum aut minus. Accusamus quaerat natus et pariatur quod. Distinctio voluptatem dolorum omnis libero officia optio earum.",
+      "image": "https://via.placeholder.com/150?text=Product+33",
+      "reviews": [
+        "Natus repellendus molestiae quod quidem ut.",
+        "Voluptatem aut doloribus.",
+        "Libero et illo consequatur amet ex.",
+        "Nesciunt aut placeat quod exercitationem.",
+        "Mollitia qui culpa velit fugiat sint qui rerum."
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Sint pariatur est",
+      "type": "TVs",
+      "price": 921,
+      "rating": "1.3",
+      "description": "Itaque et aut perferendis cum. Ut cum omnis quidem rerum quisquam debitis iure. Dolores nihil non nam ut et.",
+      "image": "https://via.placeholder.com/150?text=Product+34",
+      "reviews": [
+        "Ipsam in laboriosam libero rerum dolores iusto aut.",
+        "Voluptatem ut dolore perspiciatis consequatur distinctio ducimus.",
+        "Saepe quibusdam laudantium in ipsa.",
+        "Aut sint occaecati vitae sed aperiam ut consequuntur et."
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Dolores aut",
+      "type": "Phones",
+      "price": 1054,
+      "rating": "1.2",
+      "description": "Velit assumenda sint dolor eveniet eum. Sapiente voluptatum fuga quas vel est voluptate voluptate quas omnis. Vel nobis incidunt eos dignissimos ea sunt.",
+      "image": "https://via.placeholder.com/150?text=Product+35",
+      "reviews": [
+        "Dicta error placeat reiciendis error blanditiis.",
+        "Earum natus assumenda enim error officiis fugit vel.",
+        "Quis corrupti totam expedita eveniet ut et et."
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Sit sunt",
+      "type": "Appliances",
+      "price": 1590,
+      "rating": "2.3",
+      "description": "Porro reprehenderit odit optio illum architecto voluptas sit quo. Neque et facere consequuntur quidem. Dicta repellat eum et cumque corrupti perspiciatis assumenda beatae quidem.",
+      "image": "https://via.placeholder.com/150?text=Product+36",
+      "reviews": [
+        "Est excepturi dolores voluptatem et.",
+        "Voluptatum qui sit officiis sed illum aut accusantium.",
+        "Voluptas dignissimos vero at minima sunt et vero.",
+        "Repellendus necessitatibus adipisci quae quo autem eos accusamus.",
+        "Quo sequi aut."
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Rerum eum",
+      "type": "Appliances",
+      "price": 482,
+      "rating": "3.7",
+      "description": "Ad reprehenderit doloremque animi autem voluptatibus quia. Nulla excepturi molestiae quasi exercitationem non explicabo. Soluta repellat odio non et et quia.",
+      "image": "https://via.placeholder.com/150?text=Product+37",
+      "reviews": [
+        "Aliquid velit eum corrupti recusandae consequatur.",
+        "Quo dicta ut odit illo nihil ea alias."
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Occaecati eos",
+      "type": "Phones",
+      "price": 185,
+      "rating": "2.2",
+      "description": "Temporibus magni pariatur et eius repudiandae. Et autem voluptatem eos illo similique natus consequuntur consequatur et. Occaecati nulla quis placeat explicabo reprehenderit.",
+      "image": "https://via.placeholder.com/150?text=Product+38",
+      "reviews": [
+        "Eos ad dolorem quia deserunt in.",
+        "Harum eius eos dolores ut praesentium doloribus.",
+        "Dicta similique quidem consequatur quas qui est."
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Sit doloribus eos",
+      "type": "Appliances",
+      "price": 736,
+      "rating": "3.4",
+      "description": "Aperiam dolor quo omnis dignissimos est sit voluptate. Soluta ex non enim quia hic. Dignissimos adipisci atque ipsam.",
+      "image": "https://via.placeholder.com/150?text=Product+39",
+      "reviews": [
+        "Sint voluptatum consectetur quos sunt voluptatem aut pariatur accusamus quia.",
+        "Ipsa ea mollitia aut sunt repudiandae corporis reiciendis."
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Qui repudiandae",
+      "type": "Phones",
+      "price": 388,
+      "rating": "4.3",
+      "description": "Praesentium fugiat molestias laudantium. Nihil et consequuntur repellendus. Molestias officiis soluta adipisci.",
+      "image": "https://via.placeholder.com/150?text=Product+40",
+      "reviews": [
+        "Itaque ipsam qui sit tempora reprehenderit.",
+        "Rem quia recusandae voluptas in ab et voluptatem et."
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Veniam laboriosam",
+      "type": "Phones",
+      "price": 1907,
+      "rating": "2.6",
+      "description": "Omnis id dicta in distinctio. Eum quas vel qui voluptas officiis impedit ex. Quibusdam pariatur ipsum non ea maxime eum id inventore.",
+      "image": "https://via.placeholder.com/150?text=Product+41",
+      "reviews": [
+        "Voluptates aliquid id voluptas.",
+        "Voluptatem dolores quia voluptas."
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Est perspiciatis",
+      "type": "Appliances",
+      "price": 255,
+      "rating": "4.6",
+      "description": "Laborum ut soluta animi sapiente. Veniam eius maxime tempora dolores dolor. Voluptates saepe aliquam et.",
+      "image": "https://via.placeholder.com/150?text=Product+42",
+      "reviews": [
+        "Sint inventore ut.",
+        "Minus soluta delectus aliquid velit quibusdam magnam iusto.",
+        "Neque facilis est quia dolorem voluptas.",
+        "Earum qui iure cumque."
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Illo ut",
+      "type": "Phones",
+      "price": 1137,
+      "rating": "4.8",
+      "description": "Dolor quibusdam sunt dolorum rerum ipsam. Debitis necessitatibus ut tenetur cumque ut. Assumenda delectus et amet voluptatibus qui.",
+      "image": "https://via.placeholder.com/150?text=Product+43",
+      "reviews": [
+        "Laborum ut distinctio necessitatibus omnis eos ut mollitia nesciunt.",
+        "Molestiae laborum voluptatem praesentium cum provident molestias nesciunt.",
+        "Qui velit aut aut et reiciendis quos error et numquam.",
+        "Modi tempora occaecati hic."
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Natus eos sunt",
+      "type": "TVs",
+      "price": 1516,
+      "rating": "1.7",
+      "description": "Dolorem tempora voluptas ullam velit magni magni sed. Et quia voluptatum recusandae debitis nulla. Non velit sint harum recusandae inventore repellat.",
+      "image": "https://via.placeholder.com/150?text=Product+44",
+      "reviews": [
+        "Soluta rem doloremque aperiam asperiores laboriosam.",
+        "Voluptate voluptatibus unde magni in ducimus iste eos fugit.",
+        "Sequi tempore sed est eveniet sit in quibusdam quidem."
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Eos dolorem ipsa",
+      "type": "TVs",
+      "price": 1126,
+      "rating": "2.5",
+      "description": "Est eum omnis sit impedit consequuntur magnam. Dolores necessitatibus itaque. Recusandae et tempore.",
+      "image": "https://via.placeholder.com/150?text=Product+45",
+      "reviews": [
+        "Molestiae qui expedita quam quaerat pariatur deserunt.",
+        "Consectetur quis sed sapiente optio.",
+        "Incidunt quidem est vero unde ipsam."
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Autem dolorem qui",
+      "type": "Phones",
+      "price": 1914,
+      "rating": "1.2",
+      "description": "Nihil error quae eum vel omnis enim laborum nam. Temporibus eius fuga quo. Et sed eaque ut expedita ipsa ratione.",
+      "image": "https://via.placeholder.com/150?text=Product+46",
+      "reviews": [
+        "Nemo qui iusto autem ut magnam commodi.",
+        "Sed expedita sequi.",
+        "Ipsam odit ipsa distinctio earum sed asperiores."
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Animi nihil aspernatur",
+      "type": "Phones",
+      "price": 237,
+      "rating": "1.8",
+      "description": "Incidunt minima accusantium ut dignissimos necessitatibus. Molestiae laudantium vel doloribus dolorem quia nisi. Fuga aliquid dignissimos quia quia corporis nemo sint voluptatem.",
+      "image": "https://via.placeholder.com/150?text=Product+47",
+      "reviews": [
+        "Qui dolores adipisci esse."
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Provident iusto",
+      "type": "Video Games",
+      "price": 177,
+      "rating": "4.1",
+      "description": "Nesciunt laboriosam nostrum debitis dicta perspiciatis quaerat. Suscipit sequi molestiae aspernatur. Vero id culpa quod et.",
+      "image": "https://via.placeholder.com/150?text=Product+48",
+      "reviews": [
+        "Est aspernatur ab sunt esse quisquam iusto voluptas aut ut.",
+        "Explicabo iusto minus quas hic molestias reiciendis laudantium perspiciatis."
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Voluptatem laborum voluptas",
+      "type": "Appliances",
+      "price": 712,
+      "rating": "3.1",
+      "description": "Eveniet architecto et. Vel qui pariatur laborum corrupti optio asperiores architecto a. Occaecati voluptatibus iure sint voluptate nostrum quae dolores fuga.",
+      "image": "https://via.placeholder.com/150?text=Product+49",
+      "reviews": [
+        "Veniam sed cum voluptas explicabo aspernatur culpa accusamus.",
+        "Sit deserunt qui in ipsa quam cumque ducimus voluptate.",
+        "Cupiditate quod laboriosam aliquid eaque.",
+        "Tempora perferendis neque et consequuntur eos voluptatum quo."
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Blanditiis sunt",
+      "type": "Appliances",
+      "price": 143,
+      "rating": "1.0",
+      "description": "Ex impedit minima dolor expedita repellendus ab. Quis labore id nobis commodi veniam. Facere sit tenetur.",
+      "image": "https://via.placeholder.com/150?text=Product+50",
+      "reviews": [
+        "Quasi ut in architecto officiis at.",
+        "Non quod quas voluptatum consequatur porro cumque tempore.",
+        "Nobis est ut nihil delectus ut deserunt dolorum hic.",
+        "Eum corrupti commodi accusantium atque deleniti voluptatum saepe.",
+        "Nemo tempora rerum ea quis quis distinctio voluptatem voluptates."
+      ]
+    }
+  ]
+}

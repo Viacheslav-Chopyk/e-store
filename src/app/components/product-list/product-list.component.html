@@ -1,0 +1,8 @@
+@if (loading$ | async) {
+  <div>Loading...</div>
+}
+<div class="product-grid">
+  @for (product of (products$ | async); track product) {
+    <app-product-card [product]="product"></app-product-card>
+  }
+</div>
