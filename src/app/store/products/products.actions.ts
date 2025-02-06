@@ -23,3 +23,8 @@ export const setPage = createAction(
   '[Products] Set Page',
   props<{ page: number }>()
 );
+
+export const setItemsPerPage = createAction(
+  '[Products] Set Items Per Page',
+  props<{ itemsPerPage: number }>()
+);

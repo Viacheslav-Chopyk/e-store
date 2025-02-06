@@ -4,10 +4,10 @@ const casual = require('casual');
 const productTypes = ['TVs', 'Appliances', 'Phones', 'Video Games'];
 
 const categoryImages = {
-  TVs: '/assets/images/tv.webp',
-  Appliances: '/assets/images/appliances.webp',
-  Phones: '/assets/images/phones.webp',
-  'Video Games': '/assets/images/video-games.webp'
+  TVs: 'assets/images/tv.webp',
+  Appliances: 'assets/images/appliances.webp',
+  Phones: 'assets/images/phones.webp',
+  'Video Games': 'assets/images/video-games.webp'
 };
 
 const generateProduct = (id) => {

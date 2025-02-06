@@ -1,5 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadProducts, loadProductsSuccess, loadProductsFailure, setFilters, setPage } from './products.actions';
+import {
+  loadProducts,
+  loadProductsSuccess,
+  loadProductsFailure,
+  setFilters,
+  setPage,
+  setItemsPerPage
+} from './products.actions';
 import { Product } from '../../models/product';
 import { FilterOptions } from '../../models/filter-options';
 

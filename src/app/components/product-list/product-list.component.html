@@ -10,14 +10,10 @@
   }
 </div>
 
-@if ((totalPages$ | async); as totalPages) {
-  <div class="pagination">
-    @for (page of [].constructor(totalPages); track i; let i = $index) {
-      <button mat-button
-              (click)="goToPage(i + 1)"
-              [disabled]="(currentPage$ | async) === (i + 1)">
-        {{ i + 1 }}
-      </button>
-    }
-  </div>
-}
+<mat-paginator
+  *ngIf="(totalPages$ | async) as totalPages"
+  [length]="totalPages * pageSize"
+  [pageSize]="pageSize"
+  [showFirstLastButtons]="true"
+  (page)="onPageChange($event)">
+</mat-paginator>
