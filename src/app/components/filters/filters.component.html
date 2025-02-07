@@ -1,16 +1,16 @@
+<div class="filter-search">
 <mat-form-field appearance="fill">
-  <!--  <mat-label>Search</mat-label>-->
   <input matInput [(ngModel)]="searchText" (input)="applyFilters()" placeholder="Search products"/>
 </mat-form-field>
 
 <mat-form-field appearance="fill">
-  <!--  <mat-label>Type</mat-label>-->
   <mat-select [(ngModel)]="selectedType" (selectionChange)="applyFilters()">
     @for (type of types; track type) {
       <mat-option [value]="type">{{ type }}</mat-option>
     }
   </mat-select>
 </mat-form-field>
+</div>
 
 <div>
   @for (price of priceRanges; track price) {
@@ -23,4 +23,16 @@
       Up to ${{ price }}
     </label>
   }
+</div>
+
+<div class="price-range-filter">
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="minPrice" placeholder="Min Price" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="maxPrice" placeholder="Max Price" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="applyFilters()">Apply Price Range</button>
 </div>

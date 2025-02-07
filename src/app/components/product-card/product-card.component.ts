@@ -25,17 +25,14 @@ export class ProductCardComponent {
 
   constructor(private dialog: MatDialog) {}
 
-  nextImage(event: Event) {
-    event.stopPropagation();
-    this.currentImageIndex =
-      (this.currentImageIndex + 1) % this.product.images.length;
-  }
-
   prevImage(event: Event) {
     event.stopPropagation();
-    this.currentImageIndex =
-      (this.currentImageIndex - 1 + this.product.images.length) %
-      this.product.images.length;
+    this.currentImageIndex = (this.currentImageIndex - 1 + this.product.images.length) % this.product.images.length;
+  }
+
+  nextImage(event: Event) {
+    event.stopPropagation();
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.product.images.length;
   }
 
   openProductModal() {

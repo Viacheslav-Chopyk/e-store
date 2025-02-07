@@ -31,7 +31,9 @@ const initialState: ProductsState = {
   filters: {
     searchText: '',
     type: 'All',
-    priceRanges: []
+    priceRanges: [],
+    maxPrice: null,
+    minPrice: null,
   }
 };
 
@@ -49,7 +51,7 @@ export const productsReducer = createReducer(
     loading: false,
     products,
     filteredProducts: products,
-    paginatedProducts: paginateProducts(products, 1, state.itemsPerPage), // Відображаємо першу сторінку
+    paginatedProducts: paginateProducts(products, 1, state.itemsPerPage),
     currentPage: 1
   })),
   on(loadProductsFailure, (state, { error }) => ({ ...state, loading: false, error })),
@@ -62,7 +64,10 @@ export const productsReducer = createReducer(
         ? filters.priceRanges.some(range => product.price <= range)
         : true;
 
-      return matchesSearch && matchesType && matchesPrice;
+      const matchesMinPrice = filters.minPrice !== null ? product.price >= filters.minPrice : true;
+      const matchesMaxPrice = filters.maxPrice !== null ? product.price <= filters.maxPrice : true;
+
+      return matchesSearch && matchesType && matchesPrice && matchesMinPrice && matchesMaxPrice;
     });
 
     return {

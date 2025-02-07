@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatInput } from '@angular/material/input';
 import {ALL_TYPES, PRICE_RANGES, PRODUCT_TYPES} from './constans/filter.constants';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-filters',
@@ -16,7 +17,8 @@ import {ALL_TYPES, PRICE_RANGES, PRODUCT_TYPES} from './constans/filter.constant
     FormsModule,
     MatSelect,
     MatOption,
-    MatInput
+    MatInput,
+    MatButton
   ],
   styleUrls: ['./filters.component.scss']
 })
@@ -24,6 +26,8 @@ export class FiltersComponent {
   searchText = '';
   selectedType = ALL_TYPES;
   selectedPriceRanges: number[] = [];
+  minPrice: number | null = null;
+  maxPrice: number | null = null;
 
   types = PRODUCT_TYPES;
   priceRanges = PRICE_RANGES;
@@ -34,8 +38,11 @@ export class FiltersComponent {
     const filters: FilterOptions = {
       searchText: this.searchText,
       type: this.selectedType,
-      priceRanges: this.selectedPriceRanges
+      priceRanges: this.selectedPriceRanges,
+      minPrice: this.minPrice,
+      maxPrice: this.maxPrice
     };
+    console.log(filters)
     this.store.dispatch(setFilters({ filters }));
   }
 
