@@ -10,11 +10,21 @@ const categoryImages = {
   'Video Games': 'assets/images/video-games.webp'
 };
 
+const categoryBrands = {
+  TVs: ['Sony', 'LG', 'Samsung'],
+  Appliances: ['Bosch', 'Siemens', 'AEG'],
+  Phones: ['iPhone', 'Samsung', 'Sony'],
+  'Video Games': ['PlayStation', 'Xbox', 'Nintendo']
+};
+
 const generateProduct = (id) => {
   const type = casual.random_element(productTypes);
+  const brand = casual.random_element(categoryBrands[type]);
+  const model = casual.word;
+
   return {
     id,
-    name: casual.title,
+    name: `${brand} ${model}`,
     type,
     price: casual.integer(100, 2000),
     rating: casual.double(1, 5).toFixed(1),
@@ -24,7 +34,7 @@ const generateProduct = (id) => {
   };
 };
 
-const products = Array.from({ length: 250}, (_, i) => generateProduct(i + 1));
+const products = Array.from({ length: 250 }, (_, i) => generateProduct(i + 1));
 
 fs.writeFileSync('db.json', JSON.stringify({ products }, null, 2));
 

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { setFilters } from '../../store/products/products.actions';
 import { FilterOptions } from '../../models/filter-options';
-import {MatFormField} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
-import {MatOption, MatSelect} from '@angular/material/select';
-import {MatInput} from '@angular/material/input';
-
+import { MatFormField } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatOption, MatSelect } from '@angular/material/select';
+import { MatInput } from '@angular/material/input';
+import {ALL_TYPES, PRICE_RANGES, PRODUCT_TYPES} from './constans/filter.constants';
 
 @Component({
   selector: 'app-filters',
@@ -22,11 +22,11 @@ import {MatInput} from '@angular/material/input';
 })
 export class FiltersComponent {
   searchText = '';
-  selectedType = 'All';
+  selectedType = ALL_TYPES;
   selectedPriceRanges: number[] = [];
 
-  types = ['All', 'TVs', 'Appliances', 'Phones', 'Video Games'];
-  priceRanges = [500, 1000, 1500, 2000];
+  types = PRODUCT_TYPES;
+  priceRanges = PRICE_RANGES;
 
   constructor(private store: Store) {}
 

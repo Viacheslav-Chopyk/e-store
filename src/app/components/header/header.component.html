@@ -1,7 +1,10 @@
 <mat-toolbar color="primary" class="header-toolbar">
   <span class="logo">🛒 Electronics Store</span>
   <div class="actions">
-    <button mat-icon-button [routerLink]="'/cart'" class="cart-button" matBadge="{{ cartItemCount$ | async }}" matBadgeColor="accent">
+    <button mat-icon-button [routerLink]="'/cart'" class="cart-button"
+            [matBadge]="(cartItemCount$ | async) || null"
+            matBadgeColor="accent"
+            [matBadgeHidden]="!(cartItemCount$ | async)">
       <mat-icon>shopping_cart</mat-icon>
     </button>
   </div>

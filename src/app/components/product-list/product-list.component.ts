@@ -12,7 +12,6 @@ import { Product } from '../../models/product';
 import { ProductCardComponent } from "../product-card/product-card.component";
 import {AsyncPipe, NgIf} from "@angular/common";
 import { FiltersComponent } from "../filters/filters.component";
-import { MatButton } from "@angular/material/button";
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({

@@ -1,4 +1,9 @@
 <h1>Shopping Cart</h1>
+
+<button mat-stroked-button color="primary" [routerLink]="'/products'">
+  ⬅️ Back to Products
+</button>
+
 @for (item of (items$ | async); track item) {
   <div>
     <img [src]="item.product.image" width="100" alt="{{ item.product.name }}">

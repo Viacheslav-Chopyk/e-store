@@ -21,8 +21,13 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 }
 
 export const getInitialState = (): { cart?: CartState; products?: ProductsState } => {
-  const cart = localStorage.getItem('cart');
-  return cart ? { cart: JSON.parse(cart) } : {};
+  try {
+    const cart = localStorage.getItem('cart');
+    return cart ? { cart: JSON.parse(cart) } : {};
+  } catch (error) {
+    console.error('Error loading cart from localStorage:', error);
+    return {};
+  }
 };
 
 export const appConfig: ApplicationConfig = {

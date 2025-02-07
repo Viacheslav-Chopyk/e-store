@@ -6,14 +6,16 @@ import { Observable } from 'rxjs';
 import { CartItem } from '../../models/cart-item';
 import { AsyncPipe } from '@angular/common';
 import {MatButton} from '@angular/material/button';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-cart-summary',
   templateUrl: './cart-summary.component.html',
   imports: [
     AsyncPipe,
-    MatButton
-],
+    MatButton,
+    RouterLink
+  ],
   styleUrls: ['./cart-summary.component.scss']
 })
 export class CartSummaryComponent {
