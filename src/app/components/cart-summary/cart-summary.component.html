@@ -4,12 +4,18 @@
   ⬅️ Back to Products
 </button>
 
-@for (item of (items$ | async); track item) {
-  <div>
-    <img [src]="item.product.image" width="100" alt="{{ item.product.name }}">
-    <p>{{ item.product.name }} - ${{ item.product.price }} (x{{ item.quantity }})</p>
-    <button mat-button color="warn" (click)="removeItem(item.product.id)">Remove</button>
-  </div>
-}
+<div class="cart-container">
+  @for (item of (items$ | async); track item) {
+    <div class="cart-item">
+      <img class="product-image" [src]="item.product.images[0]" alt="{{ item.product.name }}">
 
-<h2>Total: ${{ total$ | async }}</h2>
+      <div class="item-details">
+        <p class="product-name">{{ item.product.name }}</p>
+        <p class="product-price">$ {{ item.product.price }} (x{{ item.quantity }})</p>
+        <button mat-button color="warn" (click)="removeItem(item.product.id)">Remove</button>
+      </div>
+    </div>
+  }
+</div>
+
+<h2 class="total-amount">Total: ${{ total$ | async }}</h2>

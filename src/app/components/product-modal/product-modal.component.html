@@ -1,11 +1,38 @@
 <h2 mat-dialog-title>{{ product.name }}</h2>
+
 <mat-dialog-content>
-  <img [src]="product.image" alt="{{ product.name }}" style="width: 100%">
-  <p>{{ product.description }}</p>
-  <p>Price: ${{ product.price }}</p>
-  <p>Rating: {{ product.rating }}/5</p>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="addToCart()">Add to Cart</button>
-  <button mat-button mat-dialog-close>Close</button>
-</mat-dialog-actions>
+  <div class="image-slider">
+    <img
+      [src]="product.images[currentImageIndex]"
+      alt="{{ product.name }}"
+      class="main-image"
+      />
+
+      <button mat-icon-button class="nav-button left" (click)="prevImage($event)">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button mat-icon-button class="nav-button right" (click)="nextImage($event)">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+
+      <div class="thumbnails">
+        @for (image of product.images; track image; let i = $index) {
+          <img
+            [src]="image"
+            [class.active]="i === currentImageIndex"
+            (click)="goToImage(i)"
+            alt="Thumbnail {{ i + 1 }}"
+            />
+        }
+      </div>
+    </div>
+
+    <p>{{ product.description }}</p>
+    <p>Price: ${{ product.price }}</p>
+    <p>Rating: ⭐ {{ product.rating }}/5</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button color="primary" (click)="addToCart()">Add to Cart</button>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>

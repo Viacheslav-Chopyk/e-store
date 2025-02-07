@@ -10,10 +10,11 @@
   }
 </div>
 
-<mat-paginator
-  *ngIf="(totalPages$ | async) as totalPages"
-  [length]="totalPages * pageSize"
-  [pageSize]="pageSize"
-  [showFirstLastButtons]="true"
-  (page)="onPageChange($event)">
-</mat-paginator>
+@if ((totalPages$ | async); as totalPages) {
+  <mat-paginator
+    [length]="totalPages * pageSize"
+    [pageSize]="pageSize"
+    [showFirstLastButtons]="true"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+}

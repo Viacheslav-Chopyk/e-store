@@ -4,7 +4,7 @@ import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector
 import { removeFromCart } from '../../store/cart/cart.actions';
 import { Observable } from 'rxjs';
 import { CartItem } from '../../models/cart-item';
-import { AsyncPipe } from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 
@@ -14,7 +14,7 @@ import {RouterLink} from '@angular/router';
   imports: [
     AsyncPipe,
     MatButton,
-    RouterLink
+    RouterLink,
   ],
   styleUrls: ['./cart-summary.component.scss']
 })

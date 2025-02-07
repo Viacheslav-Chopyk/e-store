@@ -1,5 +1,19 @@
 <mat-card class="product-card" (click)="openProductModal()">
-  <img mat-card-image [src]="product.image" alt="{{ product.name }}">
+  <div class="image-slider" (click)="$event.stopPropagation()">
+    <img
+      mat-card-image
+      [src]="product.images[currentImageIndex]"
+      alt="{{ product.name }}"
+      class="main-image"
+    />
+    <button mat-icon-button class="nav-button left" (click)="prevImage($event)">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button class="nav-button right" (click)="nextImage($event)">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
   <mat-card-title>{{ product.name }}</mat-card-title>
   <mat-card-content>
     <p>Price: ${{ product.price }}</p>

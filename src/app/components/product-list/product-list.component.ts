@@ -10,7 +10,7 @@ import {
 import { Observable } from 'rxjs';
 import { Product } from '../../models/product';
 import { ProductCardComponent } from "../product-card/product-card.component";
-import {AsyncPipe, NgIf} from "@angular/common";
+import { AsyncPipe } from "@angular/common";
 import { FiltersComponent } from "../filters/filters.component";
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
@@ -23,9 +23,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
     ProductCardComponent,
     AsyncPipe,
     FiltersComponent,
-    MatPaginator,
-    NgIf,
-  ],
+    MatPaginator
+],
 })
 export class ProductListComponent implements OnInit {
   paginatedProducts$!: Observable<Product[]>;
