@@ -13,7 +13,7 @@ This project is a Single Page Application (SPA) for an online electronics store 
 
 ## 🛠️ Technologies Used
 
-- **Angular 19** (using the new syntax `@if`, `@for`, `track`)
+- **Angular 21** (using the new syntax `@if`, `@for`, `track`)
 - **NGRX** for state management
 - **Angular Material** for UI components
 - **json-server** for mock backend
