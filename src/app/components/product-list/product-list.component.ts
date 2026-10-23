@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadProducts, setItemsPerPage, setPage } from '../../store/products/products.actions';
 import {
@@ -8,26 +8,29 @@ import {
   selectLoading
 } from '../../store/products/products.selectors';
 import { Observable } from 'rxjs';
-import { Product } from '../../models/product';
+import { IProduct } from '../../models/product';
 import { ProductCardComponent } from "../product-card/product-card.component";
 import { AsyncPipe } from "@angular/common";
 import { FiltersComponent } from "../filters/filters.component";
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
+import { NzSpinComponent } from 'ng-zorro-antd/spin';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ProductCardComponent,
     AsyncPipe,
     FiltersComponent,
-    MatPaginator
+    NzPaginationComponent,
+    NzSpinComponent
 ],
 })
 export class ProductListComponent implements OnInit {
-  paginatedProducts$!: Observable<Product[]>;
+  paginatedProducts$!: Observable<IProduct[]>;
   currentPage$!: Observable<number>;
   totalPages$!: Observable<number>;
   loading$!: Observable<boolean>;
@@ -43,12 +46,12 @@ export class ProductListComponent implements OnInit {
     this.loading$ = this.store.select(selectLoading);
   }
 
-  onPageChange(event: PageEvent) {
-    if (event.pageSize !== this.pageSize) {
-      this.pageSize = event.pageSize;
-      this.store.dispatch(setItemsPerPage({ itemsPerPage: event.pageSize }));
-    } else {
-      this.store.dispatch(setPage({ page: event.pageIndex + 1 }));
-    }
+  onPageIndexChange(page: number) {
+    this.store.dispatch(setPage({ page }));
+  }
+
+  onPageSizeChange(pageSize: number) {
+    this.pageSize = pageSize;
+    this.store.dispatch(setItemsPerPage({ itemsPerPage: pageSize }));
   }
 }

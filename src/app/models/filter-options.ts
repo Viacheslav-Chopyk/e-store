@@ -1,4 +1,4 @@
-export interface FilterOptions {
+export interface IFilterOptions {
   searchText: string;
   type: string;
   priceRanges: number[];

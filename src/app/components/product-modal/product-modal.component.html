@@ -1,6 +1,4 @@
-<h2 mat-dialog-title>{{ product.name }}</h2>
-
-<mat-dialog-content>
+<div class="modal-content">
   <div class="image-slider">
     <img
       [src]="product.images[currentImageIndex]"
@@ -8,11 +6,11 @@
       class="main-image"
       />
 
-      <button mat-icon-button class="nav-button left" (click)="prevImage($event)">
-        <mat-icon>chevron_left</mat-icon>
+      <button nz-button nzShape="circle" class="nav-button left" (click)="prevImage($event)">
+        <nz-icon nzType="left"/>
       </button>
-      <button mat-icon-button class="nav-button right" (click)="nextImage($event)">
-        <mat-icon>chevron_right</mat-icon>
+      <button nz-button nzShape="circle" class="nav-button right" (click)="nextImage($event)">
+        <nz-icon nzType="right"/>
       </button>
 
       <div class="thumbnails">
@@ -30,9 +28,11 @@
     <p>{{ product.description }}</p>
     <p>Price: ${{ product.price }}</p>
     <p>Rating: ⭐ {{ product.rating }}/5</p>
-  </mat-dialog-content>
+  </div>
 
-  <mat-dialog-actions>
-    <button mat-button color="primary" (click)="addToCart()">Add to Cart</button>
-    <button mat-button mat-dialog-close>Close</button>
-  </mat-dialog-actions>
+  <div class="modal-footer" *nzModalFooter>
+    <button nz-button nzType="primary" (click)="addToCart()">
+      <nz-icon nzType="shopping-cart"/> Add to Cart
+    </button>
+    <button nz-button (click)="close()">Close</button>
+  </div>

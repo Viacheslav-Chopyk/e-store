@@ -15,6 +15,7 @@
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.6);
+    border: none;
     color: white;
     z-index: 1;
 
@@ -46,19 +47,19 @@
       }
 
       &.active {
-        border: 2px solid #3f51b5;
+        border: 2px solid #1677ff;
       }
     }
   }
 }
 
-mat-dialog-content {
+.modal-content {
   p {
     margin: 5px 0;
   }
 }
 
-mat-dialog-actions {
+.modal-footer {
   display: flex;
   justify-content: space-between;
 }

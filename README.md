@@ -9,13 +9,13 @@ This project is a Single Page Application (SPA) for an online electronics store 
 - 🛒 **Shopping Cart:** Add products to the cart with persistent state across sessions.
 - 📄 **Pagination:** Navigate through a large number of products using pagination.
 - ⚡ **State Management:** Reactive state management using NGRX.
-- 🎨 **UI Components:** Built with Angular Material for a modern user interface.
+- 🎨 **UI Components:** Built with Ant Design (ng-zorro-antd) for a modern user interface.
 
 ## 🛠️ Technologies Used
 
 - **Angular 21** (using the new syntax `@if`, `@for`, `track`)
 - **NGRX** for state management
-- **Angular Material** for UI components
+- **Ant Design (ng-zorro-antd)** for UI components
 - **json-server** for mock backend
 - **TypeScript** for strong typing
 

@@ -1,11 +1,10 @@
-<mat-toolbar color="primary" class="header-toolbar">
+<nz-header class="header-toolbar">
   <span class="logo">🛒 Electronics Store</span>
   <div class="actions">
-    <button mat-icon-button [routerLink]="'/cart'" class="cart-button"
-            [matBadge]="(cartItemCount$ | async) || null"
-            matBadgeColor="accent"
-            [matBadgeHidden]="!(cartItemCount$ | async)">
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
+    <nz-badge [nzCount]="(cartItemCount$ | async) ?? 0">
+      <button nz-button nzType="text" nzShape="circle" [routerLink]="'/cart'" class="cart-button">
+        <nz-icon nzType="shopping-cart" nzTheme="outline"/>
+      </button>
+    </nz-badge>
   </div>
-</mat-toolbar>
+</nz-header>

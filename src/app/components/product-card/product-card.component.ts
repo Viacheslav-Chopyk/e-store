@@ -1,29 +1,27 @@
-import {Component, Input} from '@angular/core';
-import {Product} from '../../models/product';
-import {MatCard, MatCardContent, MatCardImage, MatCardTitle} from '@angular/material/card';
-import {MatDialog} from '@angular/material/dialog';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import {IProduct} from '../../models/product';
+import {NzCardComponent} from 'ng-zorro-antd/card';
+import {NzModalService} from 'ng-zorro-antd/modal';
 import {ProductModalComponent} from '../product-modal/product-modal.component';
-import {MatIcon} from '@angular/material/icon';
-import {MatIconButton} from '@angular/material/button';
+import {NzIconDirective} from 'ng-zorro-antd/icon';
+import {NzButtonComponent} from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-product-card',
   imports: [
-    MatCard,
-    MatCardTitle,
-    MatCardContent,
-    MatCardImage,
-    MatIcon,
-    MatIconButton
+    NzCardComponent,
+    NzIconDirective,
+    NzButtonComponent
   ],
   templateUrl: './product-card.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  @Input() product!: Product;
+  @Input() product!: IProduct;
   currentImageIndex: number = 0;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private modal: NzModalService) {}
 
   prevImage(event: Event) {
     event.stopPropagation();
@@ -36,8 +34,11 @@ export class ProductCardComponent {
   }
 
   openProductModal() {
-    this.dialog.open(ProductModalComponent, {
-      data: this.product
+    this.modal.create({
+      nzTitle: this.product.name,
+      nzContent: ProductModalComponent,
+      nzData: this.product,
+      nzWidth: 600
     });
   }
 }

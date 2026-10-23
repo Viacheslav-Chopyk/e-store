@@ -1,12 +1,12 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from '../../models/product';
-import {FilterOptions} from '../../models/filter-options';
+import { IProduct } from '../../models/product';
+import {IFilterOptions} from '../../models/filter-options';
 
 export const loadProducts = createAction('[Products] Load Products');
 
 export const loadProductsSuccess = createAction(
   '[Products] Load Products Success',
-  props<{ products: Product[] }>()
+  props<{ products: IProduct[] }>()
 );
 
 export const loadProductsFailure = createAction(
@@ -16,7 +16,7 @@ export const loadProductsFailure = createAction(
 
 export const setFilters = createAction(
   '[Products] Set Filters',
-  props<{ filters: FilterOptions }>()
+  props<{ filters: IFilterOptions }>()
 );
 
 export const setPage = createAction(

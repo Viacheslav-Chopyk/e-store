@@ -1,22 +1,23 @@
-<mat-card class="product-card" (click)="openProductModal()">
+<nz-card class="product-card" nzHoverable [nzCover]="cover" (click)="openProductModal()">
+  <h3 class="product-title">{{ product.name }}</h3>
+  <div class="product-content">
+    <p>Price: ${{ product.price }}</p>
+    <p>Rating: ⭐ {{ product.rating }}/5</p>
+  </div>
+</nz-card>
+
+<ng-template #cover>
   <div class="image-slider">
     <img
-      mat-card-image
       [src]="product.images[currentImageIndex]"
       alt="{{ product.name }}"
       class="main-image"
     />
-    <button mat-icon-button class="nav-button left" (click)="prevImage($event)">
-      <mat-icon>chevron_left</mat-icon>
+    <button nz-button nzShape="circle" class="nav-button left" (click)="prevImage($event)">
+      <nz-icon nzType="left"/>
     </button>
-    <button mat-icon-button class="nav-button right" (click)="nextImage($event)">
-      <mat-icon>chevron_right</mat-icon>
+    <button nz-button nzShape="circle" class="nav-button right" (click)="nextImage($event)">
+      <nz-icon nzType="right"/>
     </button>
   </div>
-
-  <mat-card-title>{{ product.name }}</mat-card-title>
-  <mat-card-content>
-    <p>Price: ${{ product.price }}</p>
-    <p>Rating: ⭐ {{ product.rating }}/5</p>
-  </mat-card-content>
-</mat-card>
+</ng-template>

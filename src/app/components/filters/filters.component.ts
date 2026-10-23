@@ -1,25 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { setFilters } from '../../store/products/products.actions';
-import { FilterOptions } from '../../models/filter-options';
-import { MatFormField } from '@angular/material/form-field';
+import { IFilterOptions } from '../../models/filter-options';
 import { FormsModule } from '@angular/forms';
-import { MatOption, MatSelect } from '@angular/material/select';
-import { MatInput } from '@angular/material/input';
+import { NzInputDirective, NzInputPrefixDirective, NzInputWrapperComponent } from 'ng-zorro-antd/input';
+import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
+import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
+import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
 import {ALL_TYPES, PRICE_RANGES, PRODUCT_TYPES} from './constans/filter.constants';
-import {MatButton} from '@angular/material/button';
+import {NzButtonComponent} from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   imports: [
-    MatFormField,
     FormsModule,
-    MatSelect,
-    MatOption,
-    MatInput,
-    MatButton
+    NzInputWrapperComponent,
+    NzInputDirective,
+    NzInputPrefixDirective,
+    NzSelectComponent,
+    NzOptionComponent,
+    NzInputNumberComponent,
+    NzCheckboxComponent,
+    NzIconDirective,
+    NzButtonComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent {
@@ -35,7 +42,7 @@ export class FiltersComponent {
   constructor(private store: Store) {}
 
   applyFilters() {
-    const filters: FilterOptions = {
+    const filters: IFilterOptions = {
       searchText: this.searchText,
       type: this.selectedType,
       priceRanges: this.selectedPriceRanges,

@@ -6,18 +6,18 @@ import {
   setFilters,
   setPage,
 } from './products.actions';
-import { Product } from '../../models/product';
-import { FilterOptions } from '../../models/filter-options';
+import { IProduct } from '../../models/product';
+import { IFilterOptions } from '../../models/filter-options';
 
 export interface ProductsState {
-  products: Product[];
-  filteredProducts: Product[];
-  paginatedProducts: Product[];
+  products: IProduct[];
+  filteredProducts: IProduct[];
+  paginatedProducts: IProduct[];
   currentPage: number;
   itemsPerPage: number;
   loading: boolean;
   error: string | null;
-  filters: FilterOptions;
+  filters: IFilterOptions;
 }
 
 const initialState: ProductsState = {
@@ -37,7 +37,7 @@ const initialState: ProductsState = {
   }
 };
 
-function paginateProducts(products: Product[], page: number, itemsPerPage: number): Product[] {
+function paginateProducts(products: IProduct[], page: number, itemsPerPage: number): IProduct[] {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   return products.slice(startIndex, endIndex);

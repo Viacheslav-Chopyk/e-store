@@ -1,7 +1,7 @@
 <h1>Shopping Cart</h1>
 
-<button mat-stroked-button color="primary" [routerLink]="'/products'">
-  ⬅️ Back to Products
+<button nz-button class="back-button" [routerLink]="'/products'">
+  <nz-icon nzType="arrow-left"/> Back to Products
 </button>
 
 <div class="cart-container">
@@ -12,7 +12,7 @@
       <div class="item-details">
         <p class="product-name">{{ item.product.name }}</p>
         <p class="product-price">$ {{ item.product.price }} (x{{ item.quantity }})</p>
-        <button mat-button color="warn" (click)="removeItem(item.product.id)">Remove</button>
+        <button nz-button nzType="text" nzDanger (click)="removeItem(item.product.id)"><nz-icon nzType="delete"/> Remove</button>
       </div>
     </div>
   }

@@ -1,38 +1,28 @@
 <div class="filter-search">
-<mat-form-field appearance="fill">
-  <input matInput [(ngModel)]="searchText" (input)="applyFilters()" placeholder="Search products"/>
-</mat-form-field>
+  <nz-input-wrapper>
+    <nz-icon nzInputPrefix nzType="search"/>
+    <input nz-input [(ngModel)]="searchText" (input)="applyFilters()" placeholder="Search products"/>
+  </nz-input-wrapper>
 
-<mat-form-field appearance="fill">
-  <mat-select [(ngModel)]="selectedType" (selectionChange)="applyFilters()">
+  <nz-select [(ngModel)]="selectedType" (ngModelChange)="applyFilters()">
     @for (type of types; track type) {
-      <mat-option [value]="type">{{ type }}</mat-option>
+      <nz-option [nzValue]="type" [nzLabel]="type"/>
     }
-  </mat-select>
-</mat-form-field>
+  </nz-select>
 </div>
 
-<div>
+<div class="price-ranges">
   @for (price of priceRanges; track price) {
-    <label>
-      <input
-        type="checkbox"
-        [value]="price"
-        (change)="togglePriceRange(price)"
-      />
+    <label nz-checkbox [nzChecked]="selectedPriceRanges.includes(price)" (nzCheckedChange)="togglePriceRange(price)">
       Up to ${{ price }}
     </label>
   }
 </div>
 
 <div class="price-range-filter">
-  <mat-form-field appearance="fill">
-    <input matInput [(ngModel)]="minPrice" placeholder="Min Price" />
-  </mat-form-field>
+  <nz-input-number [(ngModel)]="minPrice" [nzMin]="0" nzPlaceHolder="Min Price"/>
 
-  <mat-form-field appearance="fill">
-    <input matInput [(ngModel)]="maxPrice" placeholder="Max Price" />
-  </mat-form-field>
+  <nz-input-number [(ngModel)]="maxPrice" [nzMin]="0" nzPlaceHolder="Max Price"/>
 
-  <button mat-raised-button color="primary" (click)="applyFilters()">Apply Price Range</button>
+  <button nz-button nzType="primary" (click)="applyFilters()">Apply Price Range</button>
 </div>

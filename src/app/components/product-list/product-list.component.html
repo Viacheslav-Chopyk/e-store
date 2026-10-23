@@ -1,7 +1,7 @@
 <app-filters></app-filters>
 
 @if (loading$ | async) {
-  <div>Loading...</div>
+  <div class="loading"><nz-spin nzSimple/></div>
 }
 
 <div class="product-grid">
@@ -11,10 +11,12 @@
 </div>
 
 @if ((totalPages$ | async); as totalPages) {
-  <mat-paginator
-    [length]="totalPages * pageSize"
-    [pageSize]="pageSize"
-    [showFirstLastButtons]="true"
-    (page)="onPageChange($event)">
-  </mat-paginator>
+  <nz-pagination
+    class="pagination"
+    [nzTotal]="totalPages * pageSize"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="(currentPage$ | async) ?? 1"
+    (nzPageIndexChange)="onPageIndexChange($event)"
+    (nzPageSizeChange)="onPageSizeChange($event)">
+  </nz-pagination>
 }

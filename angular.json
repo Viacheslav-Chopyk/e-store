@@ -33,7 +33,20 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
+              "node_modules/ng-zorro-antd/style/index.min.css",
+              "node_modules/ng-zorro-antd/layout/style/index.min.css",
+              "node_modules/ng-zorro-antd/button/style/index.min.css",
+              "node_modules/ng-zorro-antd/badge/style/index.min.css",
+              "node_modules/ng-zorro-antd/input/style/index.min.css",
+              "node_modules/ng-zorro-antd/input-number/style/index.min.css",
+              "node_modules/ng-zorro-antd/select/style/index.min.css",
+              "node_modules/ng-zorro-antd/checkbox/style/index.min.css",
+              "node_modules/ng-zorro-antd/card/style/index.min.css",
+              "node_modules/ng-zorro-antd/modal/style/index.min.css",
+              "node_modules/ng-zorro-antd/message/style/index.min.css",
+              "node_modules/ng-zorro-antd/pagination/style/index.min.css",
+              "node_modules/ng-zorro-antd/spin/style/index.min.css",
+              "node_modules/ng-zorro-antd/empty/style/index.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -43,8 +56,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1MB",
+                  "maximumError": "1.5MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -94,7 +107,20 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
+              "node_modules/ng-zorro-antd/style/index.min.css",
+              "node_modules/ng-zorro-antd/layout/style/index.min.css",
+              "node_modules/ng-zorro-antd/button/style/index.min.css",
+              "node_modules/ng-zorro-antd/badge/style/index.min.css",
+              "node_modules/ng-zorro-antd/input/style/index.min.css",
+              "node_modules/ng-zorro-antd/input-number/style/index.min.css",
+              "node_modules/ng-zorro-antd/select/style/index.min.css",
+              "node_modules/ng-zorro-antd/checkbox/style/index.min.css",
+              "node_modules/ng-zorro-antd/card/style/index.min.css",
+              "node_modules/ng-zorro-antd/modal/style/index.min.css",
+              "node_modules/ng-zorro-antd/message/style/index.min.css",
+              "node_modules/ng-zorro-antd/pagination/style/index.min.css",
+              "node_modules/ng-zorro-antd/spin/style/index.min.css",
+              "node_modules/ng-zorro-antd/empty/style/index.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -102,5 +128,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

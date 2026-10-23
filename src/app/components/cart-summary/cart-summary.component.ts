@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selectors';
 import { removeFromCart } from '../../store/cart/cart.actions';
 import { Observable } from 'rxjs';
-import { CartItem } from '../../models/cart-item';
+import { ICartItem } from '../../models/cart-item';
 import {AsyncPipe} from '@angular/common';
-import {MatButton} from '@angular/material/button';
+import {NzButtonComponent} from 'ng-zorro-antd/button';
+import {NzIconDirective} from 'ng-zorro-antd/icon';
 import {RouterLink} from '@angular/router';
 
 @Component({
@@ -13,13 +14,15 @@ import {RouterLink} from '@angular/router';
   templateUrl: './cart-summary.component.html',
   imports: [
     AsyncPipe,
-    MatButton,
+    NzButtonComponent,
+    NzIconDirective,
     RouterLink,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./cart-summary.component.scss']
 })
 export class CartSummaryComponent {
-  items$!: Observable<CartItem[]>;
+  items$!: Observable<ICartItem[]>;
   total$!: Observable<number>;
 
   constructor(private store: Store) {
