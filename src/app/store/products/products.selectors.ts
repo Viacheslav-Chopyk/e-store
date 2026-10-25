@@ -3,9 +3,9 @@ import { ProductsState } from './products.reducer';
 
 export const selectProductsState = createFeatureSelector<ProductsState>('products');
 
-export const selectPaginatedProducts = createSelector(
+export const selectProducts = createSelector(
   selectProductsState,
-  (state) => state.paginatedProducts
+  (state) => state.products
 );
 
 export const selectCurrentPage = createSelector(
@@ -20,8 +20,7 @@ export const selectLoading = createSelector(
 );
 
 
-export const selectTotalPages = createSelector(
+export const selectTotal = createSelector(
   selectProductsState,
-  (state) => Math.ceil((state.filteredProducts.length || 0) / state.itemsPerPage)
+  (state) => state.total
 );
-

@@ -5,14 +5,15 @@ import {
   loadProductsFailure,
   setFilters,
   setPage,
+  setItemsPerPage,
 } from './products.actions';
 import { IProduct } from '../../models/product';
 import { IFilterOptions } from '../../models/filter-options';
 
 export interface ProductsState {
+  // Only the current page — filtering and pagination happen on the server.
   products: IProduct[];
-  filteredProducts: IProduct[];
-  paginatedProducts: IProduct[];
+  total: number;
   currentPage: number;
   itemsPerPage: number;
   loading: boolean;
@@ -22,8 +23,7 @@ export interface ProductsState {
 
 const initialState: ProductsState = {
   products: [],
-  filteredProducts: [],
-  paginatedProducts: [],
+  total: 0,
   currentPage: 1,
   itemsPerPage: 10,
   loading: false,
@@ -37,51 +37,37 @@ const initialState: ProductsState = {
   }
 };
 
-function paginateProducts(products: IProduct[], page: number, itemsPerPage: number): IProduct[] {
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  return products.slice(startIndex, endIndex);
-}
-
 export const productsReducer = createReducer(
   initialState,
-  on(loadProducts, (state) => ({ ...state, loading: true })),
-  on(loadProductsSuccess, (state, { products }) => ({
+  on(loadProducts, (state) => ({ ...state, loading: true, error: null })),
+  on(loadProductsSuccess, (state, { products, total }) => ({
     ...state,
     loading: false,
     products,
-    filteredProducts: products,
-    paginatedProducts: paginateProducts(products, 1, state.itemsPerPage),
-    currentPage: 1
+    total
   })),
   on(loadProductsFailure, (state, { error }) => ({ ...state, loading: false, error })),
 
-  on(setFilters, (state, { filters }) => {
-    const filteredProducts = state.products.filter(product => {
-      const matchesSearch = product.name.toLowerCase().includes(filters.searchText.toLowerCase());
-      const matchesType = filters.type === 'All' || product.type === filters.type;
-      const matchesPrice = filters.priceRanges.length
-        ? filters.priceRanges.some(range => product.price <= range)
-        : true;
-
-      const matchesMinPrice = filters.minPrice !== null ? product.price >= filters.minPrice : true;
-      const matchesMaxPrice = filters.maxPrice !== null ? product.price <= filters.maxPrice : true;
-
-      return matchesSearch && matchesType && matchesPrice && matchesMinPrice && matchesMaxPrice;
-    });
-
-    return {
-      ...state,
-      filters,
-      filteredProducts,
-      paginatedProducts: paginateProducts(filteredProducts, 1, state.itemsPerPage),
-      currentPage: 1
-    };
-  }),
+  on(setFilters, (state, { filters }) => ({
+    ...state,
+    filters,
+    currentPage: 1,
+    loading: true,
+    error: null
+  })),
 
   on(setPage, (state, { page }) => ({
     ...state,
     currentPage: page,
-    paginatedProducts: paginateProducts(state.filteredProducts, page, state.itemsPerPage)
+    loading: true,
+    error: null
+  })),
+
+  on(setItemsPerPage, (state, { itemsPerPage }) => ({
+    ...state,
+    itemsPerPage,
+    currentPage: 1,
+    loading: true,
+    error: null
   }))
 );

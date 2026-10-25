@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadProducts, setItemsPerPage, setPage } from '../../store/products/products.actions';
 import {
-  selectPaginatedProducts,
+  selectProducts,
   selectCurrentPage,
-  selectTotalPages,
+  selectTotal,
   selectLoading
 } from '../../store/products/products.selectors';
 import { Observable } from 'rxjs';
@@ -30,9 +30,9 @@ import { NzSpinComponent } from 'ng-zorro-antd/spin';
 ],
 })
 export class ProductListComponent implements OnInit {
-  paginatedProducts$!: Observable<IProduct[]>;
+  products$!: Observable<IProduct[]>;
   currentPage$!: Observable<number>;
-  totalPages$!: Observable<number>;
+  total$!: Observable<number>;
   loading$!: Observable<boolean>;
   pageSize = 10;
 
@@ -40,9 +40,9 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(loadProducts());
-    this.paginatedProducts$ = this.store.select(selectPaginatedProducts);
+    this.products$ = this.store.select(selectProducts);
     this.currentPage$ = this.store.select(selectCurrentPage);
-    this.totalPages$ = this.store.select(selectTotalPages);
+    this.total$ = this.store.select(selectTotal);
     this.loading$ = this.store.select(selectLoading);
   }
 

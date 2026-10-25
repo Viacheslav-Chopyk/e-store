@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IProduct } from '../models/product';
+import { IPaginatedProducts, IProductQuery } from '../models/product-query';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:3000/products';
+  private apiUrl = 'http://localhost:3000/api/products';
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.apiUrl);
+  getProducts(query: IProductQuery): Observable<IPaginatedProducts> {
+    let params = new HttpParams();
+    for (const [key, value] of Object.entries(query)) {
+      if (value !== undefined && value !== null && value !== '') {
+        params = params.set(key, value);
+      }
+    }
+    return this.http.get<IPaginatedProducts>(this.apiUrl, { params });
   }
 }

@@ -5,15 +5,15 @@
 }
 
 <div class="product-grid">
-  @for (product of (paginatedProducts$ | async); track product.id) {
+  @for (product of (products$ | async); track product.id) {
     <app-product-card [product]="product"></app-product-card>
   }
 </div>
 
-@if ((totalPages$ | async); as totalPages) {
+@if ((total$ | async); as total) {
   <nz-pagination
     class="pagination"
-    [nzTotal]="totalPages * pageSize"
+    [nzTotal]="total"
     [nzPageSize]="pageSize"
     [nzPageIndex]="(currentPage$ | async) ?? 1"
     (nzPageIndexChange)="onPageIndexChange($event)"

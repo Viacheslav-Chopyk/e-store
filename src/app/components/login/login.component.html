@@ -1,0 +1,46 @@
+<div class="login-container">
+  <div class="login-card">
+    <nz-segmented
+      nzBlock
+      [nzOptions]="modeOptions"
+      [ngModel]="mode()"
+      (nzValueChange)="setMode($any($event))"/>
+
+    @if (error()) {
+      <nz-alert nzType="error" [nzMessage]="error()!" nzShowIcon/>
+    }
+
+    <form nz-form nzLayout="vertical" [formGroup]="form" (ngSubmit)="submit()">
+      @if (mode() === 'register') {
+        <nz-form-item>
+          <nz-form-label nzRequired>Name</nz-form-label>
+          <nz-form-control nzErrorTip="At least 2 characters">
+            <input nz-input formControlName="name" autocomplete="name"/>
+          </nz-form-control>
+        </nz-form-item>
+      }
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Email</nz-form-label>
+        <nz-form-control nzErrorTip="Enter a valid email">
+          <input nz-input formControlName="email" type="email" autocomplete="email"/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Password</nz-form-label>
+        <nz-form-control nzErrorTip="At least 6 characters">
+          <input
+            nz-input
+            formControlName="password"
+            type="password"
+            [autocomplete]="mode() === 'login' ? 'current-password' : 'new-password'"/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button nzType="primary" nzBlock [nzLoading]="loading()">
+        {{ mode() === 'login' ? 'Log in' : 'Create account' }}
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, inject, provideAppInitializer } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -6,10 +6,13 @@ import { provideNzI18n, en_US } from 'ng-zorro-antd/i18n';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import {
-  ArrowLeftOutline, DeleteOutline, LeftOutline, RightOutline, SearchOutline, ShoppingCartOutline
+  ArrowLeftOutline, DeleteOutline, LeftOutline, LogoutOutline, RightOutline, SearchOutline, ShoppingCartOutline,
+  UserOutline
 } from '@ant-design/icons-angular/icons';
 import {ActionReducer, provideStore} from '@ngrx/store';
-import {provideHttpClient, withXhr} from '@angular/common/http';
+import {provideHttpClient, withInterceptors, withXhr} from '@angular/common/http';
+import {authInterceptor} from './interceptors/auth.interceptor';
+import {AuthService} from './services/auth.service';
 import {productsReducer, ProductsState} from './store/products/products.reducer';
 import {provideEffects} from '@ngrx/effects';
 import {ProductsEffects} from './store/products/products.effects';
@@ -37,11 +40,15 @@ export const getInitialState = (): { cart?: CartState; products?: ProductsState 
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withXhr()),
+    provideHttpClient(withXhr(), withInterceptors([authInterceptor])),
+    provideAppInitializer(() => inject(AuthService).restoreSession()),
     provideRouter(routes),
     provideNzI18n(en_US),
     NzModalService,
-    provideNzIcons([ArrowLeftOutline, DeleteOutline, LeftOutline, RightOutline, SearchOutline, ShoppingCartOutline]),
+    provideNzIcons([
+      ArrowLeftOutline, DeleteOutline, LeftOutline, LogoutOutline, RightOutline, SearchOutline, ShoppingCartOutline,
+      UserOutline
+    ]),
     provideStore(
       { products: productsReducer, cart: cartReducer },
       { metaReducers: [localStorageSyncReducer], initialState: getInitialState() }

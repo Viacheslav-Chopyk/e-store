@@ -6,7 +6,7 @@ export const loadProducts = createAction('[Products] Load Products');
 
 export const loadProductsSuccess = createAction(
   '[Products] Load Products Success',
-  props<{ products: IProduct[] }>()
+  props<{ products: IProduct[]; total: number }>()
 );
 
 export const loadProductsFailure = createAction(
