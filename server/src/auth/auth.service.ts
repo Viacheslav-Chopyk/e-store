@@ -2,6 +2,7 @@ import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/co
 import { JwtService } from '@nestjs/jwt';
 import { User } from '../users/user.entity.js';
 import { UsersService } from '../users/users.service.js';
+import { AuthResponse } from './dto/auth-response.dto.js';
 import { LoginDto } from './dto/login.dto.js';
 import { RegisterDto } from './dto/register.dto.js';
 import { hashPassword, verifyPassword } from './password.js';
@@ -10,11 +11,6 @@ import { hashPassword, verifyPassword } from './password.js';
 export interface JwtPayload {
   sub: number;
   email: string;
-}
-
-export interface AuthResponse {
-  accessToken: string;
-  user: User;
 }
 
 @Injectable()
