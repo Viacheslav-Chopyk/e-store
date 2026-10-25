@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of, tap } from 'rxjs';
-import { IAuthResponse, ILoginRequest, IRegisterRequest, IUser } from '../models/user';
+import {ERoles, IAuthResponse, ILoginRequest, IRegisterRequest, IUser} from '../models/user';
 
 const TOKEN_KEY = 'accessToken';
 
@@ -13,6 +13,7 @@ export class AuthService {
   private apiUrl = 'http://localhost:3000/api/auth';
 
   readonly user = signal<IUser | null>(null);
+  readonly isAdmin = computed(() => this.user()?.role === ERoles.Admin);
   readonly isLoggedIn = computed(() => this.user() !== null);
 
   get token(): string | null {

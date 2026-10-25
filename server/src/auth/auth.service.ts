@@ -10,11 +10,13 @@ import { AuthResponse } from './dto/auth-response.dto.js';
 import { LoginDto } from './dto/login.dto.js';
 import { RegisterDto } from './dto/register.dto.js';
 import { hashPassword, verifyPassword } from './password.js';
+import { ERole } from '../users/role.enum.js';
 
 // What we put inside the token. `sub` (subject) is the standard JWT field for "who this token belongs to".
 export interface JwtPayload {
   sub: number;
   email: string;
+  role: ERole;
 }
 
 @Injectable()
@@ -51,7 +53,11 @@ export class AuthService {
   }
 
   private async buildResponse(user: User): Promise<AuthResponse> {
-    const payload: JwtPayload = { sub: user.id, email: user.email };
+    const payload: JwtPayload = {
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+    };
     return { accessToken: await this.jwtService.signAsync(payload), user };
   }
 }

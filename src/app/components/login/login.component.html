@@ -4,41 +4,41 @@
       nzBlock
       [nzOptions]="modeOptions"
       [ngModel]="mode()"
-      (nzValueChange)="setMode($any($event))"/>
+      (ngModelChange)="setMode($event)"/>
 
     @if (error()) {
       <nz-alert nzType="error" [nzMessage]="error()!" nzShowIcon/>
     }
 
-    <form nz-form nzLayout="vertical" [formGroup]="form" (ngSubmit)="submit()">
+    <form nz-form nzLayout="vertical" [formRoot]="form">
       @if (mode() === 'register') {
         <nz-form-item>
           <nz-form-label nzRequired>Name</nz-form-label>
-          <nz-form-control nzErrorTip="At least 2 characters">
-            <input nz-input formControlName="name" autocomplete="name"/>
+          <nz-form-control [nzValidateStatus]="status(form.name)" nzErrorTip="At least 2 characters">
+            <input nz-input [formField]="form.name" autocomplete="name"/>
           </nz-form-control>
         </nz-form-item>
       }
 
       <nz-form-item>
         <nz-form-label nzRequired>Email</nz-form-label>
-        <nz-form-control nzErrorTip="Enter a valid email">
-          <input nz-input formControlName="email" type="email" autocomplete="email"/>
+        <nz-form-control [nzValidateStatus]="status(form.email)" nzErrorTip="Enter a valid email">
+          <input nz-input [formField]="form.email" type="email" autocomplete="email"/>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
         <nz-form-label nzRequired>Password</nz-form-label>
-        <nz-form-control nzErrorTip="At least 6 characters">
+        <nz-form-control [nzValidateStatus]="status(form.password)" nzErrorTip="At least 6 characters">
           <input
             nz-input
-            formControlName="password"
+            [formField]="form.password"
             type="password"
             [autocomplete]="mode() === 'login' ? 'current-password' : 'new-password'"/>
         </nz-form-control>
       </nz-form-item>
 
-      <button nz-button nzType="primary" nzBlock [nzLoading]="loading()">
+      <button nz-button nzType="primary" nzBlock type="submit" [nzLoading]="form().submitting()">
         {{ mode() === 'login' ? 'Log in' : 'Create account' }}
       </button>
     </form>

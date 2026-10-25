@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { setFilters } from '../../store/products/products.actions';
 import { IFilterOptions } from '../../models/filter-options';
@@ -30,35 +30,33 @@ import {NzButtonComponent} from 'ng-zorro-antd/button';
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent {
-  searchText = '';
-  selectedType = ALL_TYPES;
-  selectedPriceRanges: number[] = [];
-  minPrice: number | null = null;
-  maxPrice: number | null = null;
+  private store = inject(Store);
+
+  // [(ngModel)]="searchText" works with a signal too: it reads searchText() and calls searchText.set().
+  searchText = signal('');
+  selectedType = signal(ALL_TYPES);
+  selectedPriceRanges = signal<number[]>([]);
+  minPrice = signal<number | null>(null);
+  maxPrice = signal<number | null>(null);
 
   types = PRODUCT_TYPES;
   priceRanges = PRICE_RANGES;
 
-  constructor(private store: Store) {}
-
   applyFilters() {
     const filters: IFilterOptions = {
-      searchText: this.searchText,
-      type: this.selectedType,
-      priceRanges: this.selectedPriceRanges,
-      minPrice: this.minPrice,
-      maxPrice: this.maxPrice
+      searchText: this.searchText(),
+      type: this.selectedType(),
+      priceRanges: this.selectedPriceRanges(),
+      minPrice: this.minPrice(),
+      maxPrice: this.maxPrice()
     };
-    console.log(filters)
     this.store.dispatch(setFilters({ filters }));
   }
 
   togglePriceRange(price: number) {
-    if (this.selectedPriceRanges.includes(price)) {
-      this.selectedPriceRanges = this.selectedPriceRanges.filter(p => p !== price);
-    } else {
-      this.selectedPriceRanges = [...this.selectedPriceRanges, price];
-    }
+    this.selectedPriceRanges.update(ranges =>
+      ranges.includes(price) ? ranges.filter(p => p !== price) : [...ranges, price]
+    );
     this.applyFilters();
   }
 }

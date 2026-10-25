@@ -3,6 +3,7 @@ export interface IUser {
   email: string;
   name: string;
   createdAt: string;
+  role: ERoles
 }
 
 export interface IAuthResponse {
@@ -17,4 +18,9 @@ export interface ILoginRequest {
 
 export interface IRegisterRequest extends ILoginRequest {
   name: string;
+}
+
+export enum ERoles {
+  Admin = 'admin',
+  User = 'user',
 }

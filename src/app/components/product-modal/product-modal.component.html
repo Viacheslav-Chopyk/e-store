@@ -1,7 +1,7 @@
 <div class="modal-content">
   <div class="image-slider">
     <img
-      [src]="product.images[currentImageIndex]"
+      [src]="product.images[currentImageIndex()]"
       alt="{{ product.name }}"
       class="main-image"
       />
@@ -17,7 +17,7 @@
         @for (image of product.images; track image; let i = $index) {
           <img
             [src]="image"
-            [class.active]="i === currentImageIndex"
+            [class.active]="i === currentImageIndex()"
             (click)="goToImage(i)"
             alt="Thumbnail {{ i + 1 }}"
             />

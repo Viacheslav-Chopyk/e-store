@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IPaginatedProducts, IProductQuery } from '../models/product-query';
@@ -7,9 +7,8 @@ import { IPaginatedProducts, IProductQuery } from '../models/product-query';
   providedIn: 'root'
 })
 export class ProductService {
+  private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/api/products';
-
-  constructor(private http: HttpClient) {}
 
   public getProducts(query: IProductQuery): Observable<IPaginatedProducts> {
     let params = new HttpParams();

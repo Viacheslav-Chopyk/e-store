@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy, inject} from '@angular/core';
+import {Component, ChangeDetectionStrategy, inject, input, signal} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {IProduct} from '../../models/product';
 import {NzCardComponent} from 'ng-zorro-antd/card';
@@ -23,33 +23,34 @@ import {deleteProduct} from '../../store/products/products.actions';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent {
-  @Input() product!: IProduct;
-  currentImageIndex: number = 0;
+  product = input.required<IProduct>();
+  currentImageIndex = signal(0);
   protected authService = inject(AuthService);
   private store = inject(Store);
+  private modal = inject(NzModalService);
 
-  constructor(private modal: NzModalService) {}
-
-  prevImage(event: Event) {
+  protected prevImage(event: Event) {
     event.stopPropagation();
-    this.currentImageIndex = (this.currentImageIndex - 1 + this.product.images.length) % this.product.images.length;
+    const count = this.product().images.length;
+    this.currentImageIndex.update(i => (i - 1 + count) % count);
   }
 
-  nextImage(event: Event) {
+  protected nextImage(event: Event) {
     event.stopPropagation();
-    this.currentImageIndex = (this.currentImageIndex + 1) % this.product.images.length;
+    const count = this.product().images.length;
+    this.currentImageIndex.update(i => (i + 1) % count);
   }
 
   protected openProductModal() {
     this.modal.create({
-      nzTitle: this.product.name,
+      nzTitle: this.product().name,
       nzContent: ProductModalComponent,
-      nzData: this.product,
+      nzData: this.product(),
       nzWidth: 600
     });
   }
 
   protected deleteItem() {
-    this.store.dispatch(deleteProduct({id: this.product.id}));
+    this.store.dispatch(deleteProduct({id: this.product().id}));
   }
 }

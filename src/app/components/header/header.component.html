@@ -16,7 +16,7 @@
       </button>
     }
 
-    <nz-badge [nzCount]="(cartItemCount$ | async) ?? 0">
+    <nz-badge [nzCount]="cartItemCount()">
       <button nz-button nzType="text" nzShape="circle" [routerLink]="'/cart'" class="header-button cart-button">
         <nz-icon nzType="shopping-cart" nzTheme="outline"/>
       </button>

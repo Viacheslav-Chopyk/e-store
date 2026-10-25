@@ -1,7 +1,9 @@
 import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { email, FieldTree, form, FormField, FormRoot, minLength, required } from '@angular/forms/signals';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -16,7 +18,8 @@ type Mode = 'login' | 'register';
   templateUrl: './login.component.html',
   imports: [
     FormsModule,
-    ReactiveFormsModule,
+    FormField,
+    FormRoot,
     NzFormModule,
     NzInputDirective,
     NzButtonComponent,
@@ -27,7 +30,6 @@ type Mode = 'login' | 'register';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
 
@@ -37,46 +39,54 @@ export class LoginComponent {
   ];
 
   mode = signal<Mode>('login');
-  loading = signal(false);
   error = signal<string | null>(null);
 
-  form = this.fb.nonNullable.group({
-    name: [''],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
-  });
+  // The form's value lives in this signal; form() builds field state (errors, touched...) around it.
+  private model = signal({ name: '', email: '', password: '' });
+
+  form = form(
+    this.model,
+    (path) => {
+      // Name is only asked for on sign up — `when` re-evaluates whenever mode() changes.
+      const isRegister = () => this.mode() === 'register';
+      required(path.name, { when: isRegister });
+      minLength(path.name, 2, { when: isRegister });
+      required(path.email);
+      email(path.email);
+      required(path.password);
+      minLength(path.password, 6);
+    },
+    {
+      // Runs on <form [formRoot]> submit, only when the form is valid. Invalid fields get marked as touched.
+      submission: { action: () => this.send() }
+    }
+  );
 
   setMode(mode: Mode) {
     this.mode.set(mode);
     this.error.set(null);
-    const name = this.form.controls.name;
-    name.setValidators(mode === 'register' ? [Validators.required, Validators.minLength(2)] : []);
-    name.updateValueAndValidity();
   }
 
-  submit() {
-    if (this.form.invalid) {
-      Object.values(this.form.controls).forEach(control => {
-        control.markAsDirty();
-        control.updateValueAndValidity();
-      });
-      return;
-    }
+  // nz-form-control shows nzErrorTip only when its status is 'error'.
+  status(field: FieldTree<string>): 'error' | '' {
+    const state = field();
+    return state.touched() && state.invalid() ? 'error' : '';
+  }
 
-    const { name, email, password } = this.form.getRawValue();
-    const request$ = this.mode() === 'login'
-      ? this.authService.login({ email, password })
-      : this.authService.register({ name, email, password });
-
-    this.loading.set(true);
+  private async send() {
+    const { name, email, password } = this.model();
     this.error.set(null);
-    request$.subscribe({
-      next: () => this.router.navigate(['/']),
-      error: (err: HttpErrorResponse) => {
-        this.loading.set(false);
-        this.error.set(this.toMessage(err));
-      }
-    });
+    try {
+      await firstValueFrom(
+        this.mode() === 'login'
+          ? this.authService.login({ email, password })
+          : this.authService.register({ name, email, password })
+      );
+      await this.router.navigate(['/']);
+    } catch (err) {
+      this.error.set(this.toMessage(err as HttpErrorResponse));
+    }
+    return undefined;
   }
 
   private toMessage(err: HttpErrorResponse): string {

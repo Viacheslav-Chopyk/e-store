@@ -1,16 +1,16 @@
 <nz-card class="product-card" nzHoverable [nzCover]="cover" (click)="openProductModal()">
-  <h3 class="product-title">{{ product.name }}</h3>
+  <h3 class="product-title">{{ product().name }}</h3>
   <div class="product-content">
-    <p>Price: ${{ product.price }}</p>
-    <p>Rating: ⭐ {{ product.rating }}/5</p>
+    <p>Price: ${{ product().price }}</p>
+    <p>Rating: ⭐ {{ product().rating }}/5</p>
   </div>
 </nz-card>
 
 <ng-template #cover>
   <div class="image-slider">
     <img
-      [src]="product.images[currentImageIndex]"
-      alt="{{ product.name }}"
+      [src]="product().images[currentImageIndex()]"
+      alt="{{ product().name }}"
       class="main-image"
     />
     <button nz-button nzShape="circle" class="nav-button left" (click)="prevImage($event)">
@@ -20,7 +20,7 @@
       <nz-icon nzType="right"/>
     </button>
 
-    @if (authService.isLoggedIn()) {
+    @if (authService.isAdmin()) {
       <!-- stopPropagation: otherwise the click also reaches the card and opens the modal -->
       <button
         nz-button

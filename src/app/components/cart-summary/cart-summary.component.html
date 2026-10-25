@@ -5,7 +5,7 @@
 </button>
 
 <div class="cart-container">
-  @for (item of (items$ | async); track item) {
+  @for (item of items(); track item.product.id) {
     <div class="cart-item">
       <img class="product-image" [src]="item.product.images[0]" alt="{{ item.product.name }}">
 
@@ -18,4 +18,4 @@
   }
 </div>
 
-<h2 class="total-amount">Total: ${{ total$ | async }}</h2>
+<h2 class="total-amount">Total: ${{ total() }}</h2>

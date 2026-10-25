@@ -14,6 +14,11 @@ export const selectCurrentPage = createSelector(
 );
 
 
+export const selectItemsPerPage = createSelector(
+  selectProductsState,
+  (state) => state.itemsPerPage
+);
+
 export const selectLoading = createSelector(
   selectProductsState,
   (state) => state.loading

@@ -1,57 +1,49 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadProducts, setItemsPerPage, setPage } from '../../store/products/products.actions';
 import {
   selectProducts,
   selectCurrentPage,
   selectTotal,
-  selectLoading
+  selectLoading,
+  selectItemsPerPage
 } from '../../store/products/products.selectors';
-import { Observable } from 'rxjs';
-import { IProduct } from '../../models/product';
 import { ProductCardComponent } from "../product-card/product-card.component";
-import { AsyncPipe } from "@angular/common";
 import { FiltersComponent } from "../filters/filters.component";
 import { NzPaginationComponent } from 'ng-zorro-antd/pagination';
 import { NzSpinComponent } from 'ng-zorro-antd/spin';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ProductCardComponent,
-    AsyncPipe,
     FiltersComponent,
     NzPaginationComponent,
     NzSpinComponent
 ],
 })
 export class ProductListComponent implements OnInit {
-  products$!: Observable<IProduct[]>;
-  currentPage$!: Observable<number>;
-  total$!: Observable<number>;
-  loading$!: Observable<boolean>;
-  pageSize = 10;
+  private store = inject(Store);
+  protected authService = inject(AuthService);
+  products = this.store.selectSignal(selectProducts);
+  currentPage = this.store.selectSignal(selectCurrentPage);
+  total = this.store.selectSignal(selectTotal);
+  loading = this.store.selectSignal(selectLoading);
+  pageSize = this.store.selectSignal(selectItemsPerPage);
 
-  constructor(private store: Store) {}
-
-  ngOnInit() {
+  public ngOnInit() {
     this.store.dispatch(loadProducts());
-    this.products$ = this.store.select(selectProducts);
-    this.currentPage$ = this.store.select(selectCurrentPage);
-    this.total$ = this.store.select(selectTotal);
-    this.loading$ = this.store.select(selectLoading);
   }
 
-  onPageIndexChange(page: number) {
+  protected onPageIndexChange(page: number) {
     this.store.dispatch(setPage({ page }));
   }
 
-  onPageSizeChange(pageSize: number) {
-    this.pageSize = pageSize;
+  protected onPageSizeChange(pageSize: number) {
     this.store.dispatch(setItemsPerPage({ itemsPerPage: pageSize }));
   }
 }

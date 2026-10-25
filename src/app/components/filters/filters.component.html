@@ -1,7 +1,7 @@
 <div class="filter-search">
   <nz-input-wrapper>
     <nz-icon nzInputPrefix nzType="search"/>
-    <input nz-input [(ngModel)]="searchText" (input)="applyFilters()" placeholder="Search products"/>
+    <input nz-input [(ngModel)]="searchText" (ngModelChange)="applyFilters()" placeholder="Search products"/>
   </nz-input-wrapper>
 
   <nz-select [(ngModel)]="selectedType" (ngModelChange)="applyFilters()">
@@ -13,7 +13,7 @@
 
 <div class="price-ranges">
   @for (price of priceRanges; track price) {
-    <label nz-checkbox [nzChecked]="selectedPriceRanges.includes(price)" (nzCheckedChange)="togglePriceRange(price)">
+    <label nz-checkbox [nzChecked]="selectedPriceRanges().includes(price)" (nzCheckedChange)="togglePriceRange(price)">
       Up to ${{ price }}
     </label>
   }

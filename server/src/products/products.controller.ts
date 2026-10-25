@@ -20,6 +20,9 @@ import { QueryProductsDto } from './dto/query-products.dto.js';
 import { Product } from './product.entity.js';
 import { ProductsService } from './products.service.js';
 import { AuthGuard } from '../auth/auth.guard.js';
+import { Roles } from '../auth/roles.decorator.js';
+import { ERole } from '../users/role.enum.js';
+import { RolesGuard } from '../auth/roles.guard.js';
 
 @ApiTags('products')
 @Controller('products')
@@ -41,8 +44,9 @@ export class ProductsController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard, RolesGuard)
   @ApiBearerAuth()
+  @Roles([ERole.Admin])
   @ApiNotFoundResponse({ description: 'Product not found' })
   delete(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.productsService.removeItem(id);

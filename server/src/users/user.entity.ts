@@ -5,6 +5,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { ERole } from './role.enum.js';
 
 @Entity('users')
 export class User {
@@ -25,4 +26,7 @@ export class User {
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;
+
+  @Column({ type: 'enum', enum: ERole, default: ERole.User })
+  role: ERole;
 }

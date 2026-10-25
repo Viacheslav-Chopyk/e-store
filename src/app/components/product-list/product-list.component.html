@@ -1,22 +1,25 @@
-<app-filters></app-filters>
+@if(authService.isLoggedIn()) {
+  <app-filters></app-filters>
 
-@if (loading$ | async) {
-  <div class="loading"><nz-spin nzSimple/></div>
-}
-
-<div class="product-grid">
-  @for (product of (products$ | async); track product.id) {
-    <app-product-card [product]="product"></app-product-card>
+  @if (loading()) {
+    <div class="loading"><nz-spin nzSimple/></div>
   }
-</div>
 
-@if ((total$ | async); as total) {
-  <nz-pagination
-    class="pagination"
-    [nzTotal]="total"
-    [nzPageSize]="pageSize"
-    [nzPageIndex]="(currentPage$ | async) ?? 1"
-    (nzPageIndexChange)="onPageIndexChange($event)"
-    (nzPageSizeChange)="onPageSizeChange($event)">
-  </nz-pagination>
+  <div class="product-grid">
+    @for (product of products(); track product.id) {
+      <app-product-card [product]="product"></app-product-card>
+    }
+  </div>
+
+  @if (total(); as total) {
+    <nz-pagination
+      class="pagination"
+      [nzTotal]="total"
+      [nzPageSize]="pageSize()"
+      [nzPageIndex]="currentPage()"
+      (nzPageIndexChange)="onPageIndexChange($event)"
+      (nzPageSizeChange)="onPageSizeChange($event)">
+    </nz-pagination>
+  }
 }
+
