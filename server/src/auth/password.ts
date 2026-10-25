@@ -1,7 +1,11 @@
 import { randomBytes, scrypt, timingSafeEqual } from 'node:crypto';
 import { promisify } from 'node:util';
 
-const scryptAsync = promisify(scrypt) as (password: string, salt: string, keylen: number) => Promise<Buffer>;
+const scryptAsync = promisify(scrypt) as (
+  password: string,
+  salt: string,
+  keylen: number,
+) => Promise<Buffer>;
 const KEY_LENGTH = 64;
 
 // Stored as "salt:hash". A random salt per user means two equal passwords get different hashes.
@@ -11,7 +15,10 @@ export async function hashPassword(password: string): Promise<string> {
   return `${salt}:${hash.toString('hex')}`;
 }
 
-export async function verifyPassword(password: string, stored: string): Promise<boolean> {
+export async function verifyPassword(
+  password: string,
+  stored: string,
+): Promise<boolean> {
   const [salt, hashHex] = stored.split(':');
   const expected = Buffer.from(hashHex ?? '', 'hex');
   // Malformed value (e.g. a plain password typed into the DB by hand) — treat as a wrong password, not a crash.

@@ -40,6 +40,13 @@
         right: 5px;
       }
     }
+
+    .delete-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 1;
+    }
   }
 
   .product-title {

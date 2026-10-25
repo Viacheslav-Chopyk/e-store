@@ -27,8 +27,12 @@ export class UsersService {
     return this.usersRepository.existsBy({ email });
   }
 
-  async create(data: Pick<User, 'email' | 'name' | 'passwordHash'>): Promise<User> {
-    const { passwordHash: _, ...user } = await this.usersRepository.save(this.usersRepository.create(data));
+  async create(
+    data: Pick<User, 'email' | 'name' | 'passwordHash'>,
+  ): Promise<User> {
+    const { passwordHash: _, ...user } = await this.usersRepository.save(
+      this.usersRepository.create(data),
+    );
     return user as User;
   }
 }

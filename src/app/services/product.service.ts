@@ -11,7 +11,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(query: IProductQuery): Observable<IPaginatedProducts> {
+  public getProducts(query: IProductQuery): Observable<IPaginatedProducts> {
     let params = new HttpParams();
     for (const [key, value] of Object.entries(query)) {
       if (value !== undefined && value !== null && value !== '') {
@@ -19,5 +19,9 @@ export class ProductService {
       }
     }
     return this.http.get<IPaginatedProducts>(this.apiUrl, { params });
+  }
+
+  public deleteProduct(id: number):Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

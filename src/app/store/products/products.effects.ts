@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
+import {NzMessageService} from 'ng-zorro-antd/message';
 import {ProductService} from '../../services/product.service';
 import {
   loadProducts,
@@ -8,13 +9,16 @@ import {
   loadProductsFailure,
   setFilters,
   setPage,
-  setItemsPerPage
+  setItemsPerPage,
+  deleteProduct,
+  deleteProductSuccess,
+  deleteProductFailure
 } from './products.actions';
 import {selectProductsState} from './products.selectors';
 import {ProductsState} from './products.reducer';
 import {IProductQuery} from '../../models/product-query';
 import {ALL_TYPES} from '../../components/filters/constans/filter.constants';
-import {catchError, map, of, switchMap, withLatestFrom} from 'rxjs';
+import {catchError, map, mergeMap, of, switchMap, tap, withLatestFrom} from 'rxjs';
 
 function toQuery({filters, currentPage, itemsPerPage}: ProductsState): IProductQuery {
   // "Up to $X" checkboxes are OR-ed, so together they mean "price <= the largest checked X".
@@ -38,10 +42,12 @@ export class ProductsEffects {
   private actions$ = inject(Actions);
   private store = inject(Store);
   private productService = inject(ProductService)
+  private message = inject(NzMessageService);
 
   loadProducts$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadProducts, setFilters, setPage, setItemsPerPage),
+      // deleteProductSuccess: reload the current page so the gap is filled and `total` stays correct
+      ofType(loadProducts, setFilters, setPage, setItemsPerPage, deleteProductSuccess),
       withLatestFrom(this.store.select(selectProductsState)),
       // switchMap drops stale responses, e.g. while the user is still typing in search
       switchMap(([, state]) =>
@@ -51,5 +57,31 @@ export class ProductsEffects {
         )
       )
     )
+  );
+
+  deleteProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteProduct),
+      // mergeMap, not switchMap: deleting two products quickly must not cancel the first request
+      mergeMap(({id}) =>
+        this.productService.deleteProduct(id).pipe(
+          map(() => deleteProductSuccess({id})),
+          catchError((error) => of(deleteProductFailure({error: error.error?.message ?? error.message})))
+        )
+      )
+    )
+  );
+
+  deleteProductResult$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(deleteProductSuccess, deleteProductFailure),
+        tap((action) =>
+          action.type === deleteProductSuccess.type
+            ? this.message.success('Product deleted')
+            : this.message.error(`Could not delete product: ${action.error}`)
+        )
+      ),
+    {dispatch: false}
   );
 }

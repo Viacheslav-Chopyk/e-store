@@ -19,5 +19,23 @@
     <button nz-button nzShape="circle" class="nav-button right" (click)="nextImage($event)">
       <nz-icon nzType="right"/>
     </button>
+
+    @if (authService.isLoggedIn()) {
+      <!-- stopPropagation: otherwise the click also reaches the card and opens the modal -->
+      <button
+        nz-button
+        nzShape="circle"
+        nzDanger
+        class="delete-button"
+        title="Delete"
+        nz-popconfirm
+        nzPopconfirmTitle="Delete this product?"
+        nzOkText="Delete"
+        nzOkDanger
+        (click)="$event.stopPropagation()"
+        (nzOnConfirm)="deleteItem()">
+        <nz-icon nzType="delete"/>
+      </button>
+    }
   </div>
 </ng-template>

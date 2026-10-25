@@ -10,23 +10,29 @@ interface MockProduct extends Omit<Product, 'id' | 'rating'> {
 }
 
 async function seed() {
-  const app = await NestFactory.createApplicationContext(AppModule, { logger: ['error', 'warn'] });
+  const app = await NestFactory.createApplicationContext(AppModule, {
+    logger: ['error', 'warn'],
+  });
   const dataSource = app.get(DataSource);
 
   const file = resolve(process.cwd(), '../mock-data/db.json');
-  const { products } = JSON.parse(await readFile(file, 'utf-8')) as { products: MockProduct[] };
+  const { products } = JSON.parse(await readFile(file, 'utf-8')) as {
+    products: MockProduct[];
+  };
 
   await dataSource.query('TRUNCATE TABLE products RESTART IDENTITY CASCADE');
   await dataSource.getRepository(Product).save(
-    products.map(({ name, type, price, rating, description, images, reviews }) => ({
-      name,
-      type,
-      price,
-      rating: Number(rating),
-      description,
-      images,
-      reviews,
-    })),
+    products.map(
+      ({ name, type, price, rating, description, images, reviews }) => ({
+        name,
+        type,
+        price,
+        rating: Number(rating),
+        description,
+        images,
+        reviews,
+      }),
+    ),
     { chunk: 100 },
   );
 
