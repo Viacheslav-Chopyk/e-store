@@ -5,10 +5,7 @@ import { routes } from './app.routes';
 import { provideNzI18n, en_US } from 'ng-zorro-antd/i18n';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { NzModalService } from 'ng-zorro-antd/modal';
-import {
-  ArrowLeftOutline, DeleteOutline, LeftOutline, LogoutOutline, RightOutline, SearchOutline, ShoppingCartOutline,
-  UserOutline
-} from '@ant-design/icons-angular/icons';
+import { APP_ICONS } from './icons';
 import {ActionReducer, provideStore} from '@ngrx/store';
 import {provideHttpClient, withInterceptors, withXhr} from '@angular/common/http';
 import {authInterceptor} from './interceptors/auth.interceptor';
@@ -45,10 +42,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideNzI18n(en_US),
     NzModalService,
-    provideNzIcons([
-      ArrowLeftOutline, DeleteOutline, LeftOutline, LogoutOutline, RightOutline, SearchOutline, ShoppingCartOutline,
-      UserOutline
-    ]),
+    provideNzIcons(APP_ICONS),
     provideStore(
       { products: productsReducer, cart: cartReducer },
       { metaReducers: [localStorageSyncReducer], initialState: getInitialState() }

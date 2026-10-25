@@ -1,10 +1,15 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { provideMockStore } from '@ngrx/store/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      // The header needs the store (cart count), router links and AuthService (HttpClient).
+      providers: [provideRouter([]), provideHttpClient(), provideMockStore({ initialState: { cart: { items: [] } } })],
     }).compileComponents();
   });
 
@@ -20,10 +25,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('electronics-store');
   });
 
-  it('should render title', () => {
+  it('should render the header', async () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+    await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, electronics-store');
+    expect(compiled.querySelector('.logo')?.textContent).toContain('Electronics Store');
   });
 });

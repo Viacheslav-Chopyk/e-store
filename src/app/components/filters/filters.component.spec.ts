@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { FiltersComponent } from './filters.component';
 
@@ -8,7 +11,8 @@ describe('FiltersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FiltersComponent]
+      imports: [FiltersComponent],
+      providers: [provideHttpClient(), provideRouter([]), provideMockStore({ initialState: { products: {}, cart: { items: [] } } })]
     })
     .compileComponents();
 
