@@ -30,7 +30,6 @@ describe('ProductCardComponent', () => {
 
     fixture = TestBed.createComponent(ProductCardComponent);
     component = fixture.componentInstance;
-    // `product` is input.required() — it must be set before the first render.
     fixture.componentRef.setInput('product', product);
     fixture.detectChanges();
   });

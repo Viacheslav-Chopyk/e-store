@@ -11,7 +11,6 @@ import { IProduct } from '../../models/product';
 import { IFilterOptions } from '../../models/filter-options';
 
 export interface ProductsState {
-  // Only the current page — filtering and pagination happen on the server.
   products: IProduct[];
   total: number;
   currentPage: number;

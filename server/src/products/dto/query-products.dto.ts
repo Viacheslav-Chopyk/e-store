@@ -28,7 +28,6 @@ export class QueryProductsDto {
   @Min(0)
   maxPrice?: number;
 
-  // Has a default, so not required — the plugin would otherwise mark it required.
   @ApiPropertyOptional({ default: 1 })
   @IsOptional()
   @Type(() => Number)

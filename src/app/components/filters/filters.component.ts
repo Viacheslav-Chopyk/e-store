@@ -32,7 +32,6 @@ import {NzButtonComponent} from 'ng-zorro-antd/button';
 export class FiltersComponent {
   private store = inject(Store);
 
-  // [(ngModel)]="searchText" works with a signal too: it reads searchText() and calls searchText.set().
   searchText = signal('');
   selectedType = signal(ALL_TYPES);
   selectedPriceRanges = signal<number[]>([]);

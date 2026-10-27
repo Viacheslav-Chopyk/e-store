@@ -10,7 +10,6 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      // The header needs the store (cart count), router links and AuthService (HttpClient).
       providers: [provideRouter([]), provideHttpClient(), provideMockStore({ initialState: { cart: { items: [] } } })],
     }).compileComponents();
   });

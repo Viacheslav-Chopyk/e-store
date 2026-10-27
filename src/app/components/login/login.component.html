@@ -11,7 +11,7 @@
     }
 
     <form nz-form nzLayout="vertical" [formRoot]="form">
-      @if (mode() === 'register') {
+      @if (mode() === EAuthMode.Register) {
         <nz-form-item>
           <nz-form-label nzRequired>Name</nz-form-label>
           <nz-form-control [nzValidateStatus]="status(form.name)" nzErrorTip="At least 2 characters">
@@ -42,13 +42,13 @@
               nz-input
               [formField]="form.password"
               placeholder="Password"
-              [autocomplete]="mode() === 'login' ? 'current-password' : 'new-password'"/>
+              [autocomplete]="mode() === EAuthMode.Login ? 'current-password' : 'new-password'"/>
           </nz-input-password>
         </nz-form-control>
       </nz-form-item>
 
       <button nz-button nzType="primary" nzBlock type="submit" [nzLoading]="form().submitting()">
-        {{ mode() === 'login' ? 'Log in' : 'Create account' }}
+        {{ mode() === EAuthMode.Login ? 'Log in' : 'Create account' }}
       </button>
     </form>
   </div>

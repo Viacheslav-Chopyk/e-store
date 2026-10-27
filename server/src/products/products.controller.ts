@@ -9,13 +9,14 @@ import {
   ParseIntPipe,
   Query,
   UseGuards,
-  Body
+  Body,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
   ApiNotFoundResponse,
-  ApiTags, ApiUnauthorizedResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { PaginatedProducts } from './dto/paginated-products.dto.js';
 import { QueryProductsDto } from './dto/query-products.dto.js';
@@ -25,7 +26,7 @@ import { AuthGuard } from '../auth/auth.guard.js';
 import { Roles } from '../auth/roles.decorator.js';
 import { ERole } from '../users/role.enum.js';
 import { RolesGuard } from '../auth/roles.guard.js';
-import {CreateProductDto} from './dto/create-product.dto.js';
+import { CreateProductDto } from './dto/create-product.dto.js';
 
 @ApiTags('products')
 @Controller('products')
@@ -60,7 +61,7 @@ export class ProductsController {
   @Post()
   @UseGuards(RolesGuard)
   @Roles([ERole.Admin])
-  create(@Body() dto:CreateProductDto):Promise<Product> {
-    return this.productsService.createProduct(dto)
+  create(@Body() dto: CreateProductDto): Promise<Product> {
+    return this.productsService.createProduct(dto);
   }
 }

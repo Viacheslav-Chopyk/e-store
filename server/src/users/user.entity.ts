@@ -18,8 +18,6 @@ export class User {
   @Column()
   name: string;
 
-  // Never the password itself — only its salted hash (see auth/password.ts).
-  // select: false keeps it out of every query unless explicitly requested.
   @ApiHideProperty()
   @Column({ select: false })
   passwordHash: string;

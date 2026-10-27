@@ -21,7 +21,6 @@ async function bootstrap() {
     app,
     () => SwaggerModule.createDocument(app, swaggerConfig),
     {
-      // Keep the token entered via "Authorize" after a page reload.
       swaggerOptions: { persistAuthorization: true },
     },
   );

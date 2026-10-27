@@ -24,6 +24,7 @@ import { AuthService, type JwtPayload } from './auth.service.js';
 import { CurrentUser } from './current-user.decorator.js';
 import { AuthResponse } from './dto/auth-response.dto.js';
 import { LoginDto } from './dto/login.dto.js';
+import { RefreshTokenDto } from './dto/refresh-token.dto.js';
 import { RegisterDto } from './dto/register.dto.js';
 
 @ApiTags('auth')
@@ -54,6 +55,23 @@ export class AuthController {
     return this.authService.login(dto);
   }
 
+  /** Exchange a refresh token for a new access + refresh token pair */
+  @Post('refresh')
+  @HttpCode(HttpStatus.OK)
+  @ApiUnauthorizedResponse({
+    description: 'Unknown, used or expired refresh token',
+  })
+  refresh(@Body() dto: RefreshTokenDto): Promise<AuthResponse> {
+    return this.authService.refresh(dto.refreshToken);
+  }
+
+  /** Revoke a refresh token (log out on this device) */
+  @Post('logout')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  logout(@Body() dto: RefreshTokenDto): Promise<void> {
+    return this.authService.logout(dto.refreshToken);
+  }
+
   /** The user the token belongs to */
   @Get('me')
   @UseGuards(AuthGuard)
@@ -61,7 +79,6 @@ export class AuthController {
   @ApiUnauthorizedResponse({ description: 'Missing, invalid or expired token' })
   async me(@CurrentUser() payload: JwtPayload): Promise<User> {
     const user = await this.usersService.findById(payload.sub);
-    // Token is valid but the user was deleted since it was issued.
     if (!user) {
       throw new UnauthorizedException();
     }

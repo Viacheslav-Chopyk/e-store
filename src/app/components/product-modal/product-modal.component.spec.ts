@@ -23,7 +23,6 @@ describe('ProductModalComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProductModalComponent],
-      // Normally NzModalService provides these when it opens the modal.
       providers: [
         provideMockStore(),
         { provide: NZ_MODAL_DATA, useValue: product },

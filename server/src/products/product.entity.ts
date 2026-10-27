@@ -14,7 +14,7 @@ export class Product {
   @Column('integer')
   price: number;
 
-  @Column('real', {default: 0})
+  @Column('real', { default: 0 })
   rating: number;
 
   @Column('text')

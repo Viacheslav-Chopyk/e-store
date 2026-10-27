@@ -10,8 +10,6 @@ import { JwtPayload } from './auth.service.js';
 
 export type AuthenticatedRequest = Request & { user: JwtPayload };
 
-// Runs before the route handler. Lets the request through only with a valid
-// "Authorization: Bearer <token>" header, and stores the token payload on request.user.
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private readonly jwtService: JwtService) {}
@@ -23,7 +21,6 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException();
     }
     try {
-      // Checks the signature (token was issued by us, not forged) and expiry.
       request.user = await this.jwtService.verifyAsync<JwtPayload>(token);
     } catch {
       throw new UnauthorizedException();

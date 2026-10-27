@@ -9,7 +9,6 @@ import { ThrottlerModule } from '@nestjs/throttler';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    // Rate-limit rules; applied only where ThrottlerGuard is used (login/register), not app-wide.
     ThrottlerModule.forRoot({
       throttlers: [{ ttl: 60_000, limit: 5 }],
       errorMessage: 'Too many attempts, try again in a minute',

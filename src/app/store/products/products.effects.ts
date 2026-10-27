@@ -21,7 +21,6 @@ import {ALL_TYPES} from '../../components/filters/constans/filter.constants';
 import {catchError, map, mergeMap, of, switchMap, tap, withLatestFrom} from 'rxjs';
 
 function toQuery({filters, currentPage, itemsPerPage}: ProductsState): IProductQuery {
-  // "Up to $X" checkboxes are OR-ed, so together they mean "price <= the largest checked X".
   const maxPrices = [
     filters.maxPrice,
     filters.priceRanges.length ? Math.max(...filters.priceRanges) : null
@@ -46,10 +45,8 @@ export class ProductsEffects {
 
   loadProducts$ = createEffect(() =>
     this.actions$.pipe(
-      // deleteProductSuccess: reload the current page so the gap is filled and `total` stays correct
       ofType(loadProducts, setFilters, setPage, setItemsPerPage, deleteProductSuccess),
       withLatestFrom(this.store.select(selectProductsState)),
-      // switchMap drops stale responses, e.g. while the user is still typing in search
       switchMap(([, state]) =>
         this.productService.getProducts(toQuery(state)).pipe(
           map(({items, total}) => loadProductsSuccess({products: items, total})),
@@ -62,7 +59,6 @@ export class ProductsEffects {
   deleteProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteProduct),
-      // mergeMap, not switchMap: deleting two products quickly must not cancel the first request
       mergeMap(({id}) =>
         this.productService.deleteProduct(id).pipe(
           map(() => deleteProductSuccess({id})),

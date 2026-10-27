@@ -11,8 +11,7 @@ import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzAlertComponent } from 'ng-zorro-antd/alert';
 import { NzSegmentedComponent } from 'ng-zorro-antd/segmented';
 import { AuthService } from '../../services/auth.service';
-
-type Mode = 'login' | 'register';
+import { EAuthMode } from '../../models/auth-mode';
 
 @Component({
   selector: 'app-login',
@@ -35,22 +34,22 @@ export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
+  readonly EAuthMode = EAuthMode;
+
   readonly modeOptions = [
-    { label: 'Log in', value: 'login' },
-    { label: 'Sign up', value: 'register' }
+    { label: 'Log in', value: EAuthMode.Login },
+    { label: 'Sign up', value: EAuthMode.Register }
   ];
 
-  mode = signal<Mode>('login');
+  mode = signal<EAuthMode>(EAuthMode.Login);
   error = signal<string | null>(null);
 
-  // The form's value lives in this signal; form() builds field state (errors, touched...) around it.
   private model = signal({ name: '', email: '', password: '' });
 
   form = form(
     this.model,
     (path) => {
-      // Name is only asked for on sign up — `when` re-evaluates whenever mode() changes.
-      const isRegister = () => this.mode() === 'register';
+      const isRegister = () => this.mode() === EAuthMode.Register;
       required(path.name, { when: isRegister });
       minLength(path.name, 2, { when: isRegister });
       required(path.email);
@@ -59,17 +58,15 @@ export class LoginComponent {
       minLength(path.password, 6);
     },
     {
-      // Runs on <form [formRoot]> submit, only when the form is valid. Invalid fields get marked as touched.
       submission: { action: () => this.send() }
     }
   );
 
-  setMode(mode: Mode) {
+  setMode(mode: EAuthMode) {
     this.mode.set(mode);
     this.error.set(null);
   }
 
-  // nz-form-control shows nzErrorTip only when its status is 'error'.
   status(field: FieldTree<string>): 'error' | '' {
     const state = field();
     return state.touched() && state.invalid() ? 'error' : '';
@@ -77,11 +74,9 @@ export class LoginComponent {
 
   private async send() {
     const { name, email, password } = this.model();
-    // Keep the previous error visible while the request is in flight: hiding it would shrink the card
-    // and make it jump. It is replaced by the next error, or goes away with the page on success.
     try {
       await firstValueFrom(
-        this.mode() === 'login'
+        this.mode() === EAuthMode.Login
           ? this.authService.login({ email, password })
           : this.authService.register({ name, email, password })
       );

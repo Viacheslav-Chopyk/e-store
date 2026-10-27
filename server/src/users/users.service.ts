@@ -14,7 +14,6 @@ export class UsersService {
     return this.usersRepository.findOneBy({ id });
   }
 
-  // Used only for login: the one place that needs passwordHash.
   findByEmailWithPassword(email: string): Promise<User | null> {
     return this.usersRepository
       .createQueryBuilder('user')
