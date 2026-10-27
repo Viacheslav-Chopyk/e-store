@@ -15,7 +15,10 @@
         <nz-form-item>
           <nz-form-label nzRequired>Name</nz-form-label>
           <nz-form-control [nzValidateStatus]="status(form.name)" nzErrorTip="At least 2 characters">
-            <input nz-input [formField]="form.name" autocomplete="name"/>
+            <nz-input-wrapper>
+              <nz-icon nzInputPrefix nzType="user"/>
+              <input nz-input [formField]="form.name" placeholder="Name" autocomplete="name"/>
+            </nz-input-wrapper>
           </nz-form-control>
         </nz-form-item>
       }
@@ -23,18 +26,24 @@
       <nz-form-item>
         <nz-form-label nzRequired>Email</nz-form-label>
         <nz-form-control [nzValidateStatus]="status(form.email)" nzErrorTip="Enter a valid email">
-          <input nz-input [formField]="form.email" type="email" autocomplete="email"/>
+          <nz-input-wrapper>
+            <nz-icon nzInputPrefix nzType="user"/>
+            <input nz-input [formField]="form.email" type="email" placeholder="Email" autocomplete="email"/>
+          </nz-input-wrapper>
         </nz-form-control>
       </nz-form-item>
 
       <nz-form-item>
         <nz-form-label nzRequired>Password</nz-form-label>
         <nz-form-control [nzValidateStatus]="status(form.password)" nzErrorTip="At least 6 characters">
-          <input
-            nz-input
-            [formField]="form.password"
-            type="password"
-            [autocomplete]="mode() === 'login' ? 'current-password' : 'new-password'"/>
+          <nz-input-password>
+            <nz-icon nzInputPrefix nzType="lock"/>
+            <input
+              nz-input
+              [formField]="form.password"
+              placeholder="Password"
+              [autocomplete]="mode() === 'login' ? 'current-password' : 'new-password'"/>
+          </nz-input-password>
         </nz-form-control>
       </nz-form-item>
 

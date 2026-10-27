@@ -1,2 +1,4 @@
-<app-header/>
+@if (authService.isLoggedIn()) {
+  <app-header/>
+}
 <router-outlet/>

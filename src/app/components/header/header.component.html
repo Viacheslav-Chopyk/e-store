@@ -9,11 +9,6 @@
       <button nz-button nzType="text" nzShape="circle" class="header-button" title="Log out" (click)="logout()">
         <nz-icon nzType="logout" nzTheme="outline"/>
       </button>
-    } @else {
-      <button nz-button nzType="text" class="header-button login-button" [routerLink]="'/login'">
-        <nz-icon nzType="user" nzTheme="outline"/>
-        Log in
-      </button>
     }
 
     <nz-badge [nzCount]="cartItemCount()">

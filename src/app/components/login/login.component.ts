@@ -5,7 +5,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzInputDirective } from 'ng-zorro-antd/input';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzAlertComponent } from 'ng-zorro-antd/alert';
 import { NzSegmentedComponent } from 'ng-zorro-antd/segmented';
@@ -21,7 +22,8 @@ type Mode = 'login' | 'register';
     FormField,
     FormRoot,
     NzFormModule,
-    NzInputDirective,
+    NzInputModule,
+    NzIconModule,
     NzButtonComponent,
     NzAlertComponent,
     NzSegmentedComponent

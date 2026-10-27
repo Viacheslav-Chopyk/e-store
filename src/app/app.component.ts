@@ -1,6 +1,7 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {Component, ChangeDetectionStrategy, inject} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './components/header/header.component';
+import {AuthService} from './services/auth.service';
 
 
 
@@ -16,4 +17,5 @@ import {HeaderComponent} from './components/header/header.component';
 })
 export class AppComponent {
   title = 'electronics-store';
+  authService = inject(AuthService);
 }
