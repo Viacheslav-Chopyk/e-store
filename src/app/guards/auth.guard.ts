@@ -1,13 +1,14 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { ERoutes } from '../models/routes';
 
 export const authGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
-  return authService.isLoggedIn() || inject(Router).createUrlTree(['/login']);
+  return authService.isLoggedIn() || inject(Router).createUrlTree(['/', ERoutes.Login]);
 };
 
 export const guestGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
-  return !authService.isLoggedIn() || inject(Router).createUrlTree(['/']);
+  return !authService.isLoggedIn() || inject(Router).createUrlTree(['/', ERoutes.Products]);
 };

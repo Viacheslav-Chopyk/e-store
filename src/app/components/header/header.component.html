@@ -12,7 +12,7 @@
     }
 
     <nz-badge [nzCount]="cartItemCount()">
-      <button nz-button nzType="text" nzShape="circle" [routerLink]="'/cart'" class="header-button cart-button">
+      <button nz-button nzType="text" nzShape="circle" [routerLink]="['/', ERoutes.Cart]" class="header-button cart-button">
         <nz-icon nzType="shopping-cart" nzTheme="outline"/>
       </button>
     </nz-badge>

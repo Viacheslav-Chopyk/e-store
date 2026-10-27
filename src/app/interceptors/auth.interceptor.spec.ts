@@ -4,6 +4,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { provideRouter, Router } from '@angular/router';
 import { authInterceptor } from './auth.interceptor';
 import { ERoles, IAuthResponse } from '../models/user';
+import { ERoutes } from '../models/routes';
 
 const API = 'http://localhost:3000/api';
 const user = { id: 1, email: 'a@a.com', name: 'A', createdAt: '', role: ERoles.User };
@@ -70,7 +71,7 @@ describe('authInterceptor', () => {
     expect(failed).toBe(true);
     expect(localStorage.getItem('accessToken')).toBeNull();
     expect(localStorage.getItem('refreshToken')).toBeNull();
-    expect(router.navigate).toHaveBeenCalledWith(['/login']);
+    expect(router.navigate).toHaveBeenCalledWith(['/', ERoutes.Login]);
   });
 
   it('does not refresh on a failed login (wrong password)', () => {

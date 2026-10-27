@@ -12,6 +12,7 @@ import { NzAlertComponent } from 'ng-zorro-antd/alert';
 import { NzSegmentedComponent } from 'ng-zorro-antd/segmented';
 import { AuthService } from '../../services/auth.service';
 import { EAuthMode } from '../../models/auth-mode';
+import { ERoutes } from '../../models/routes';
 
 @Component({
   selector: 'app-login',
@@ -80,7 +81,7 @@ export class LoginComponent {
           ? this.authService.login({ email, password })
           : this.authService.register({ name, email, password })
       );
-      await this.router.navigate(['/']);
+      await this.router.navigate(['/', ERoutes.Products]);
     } catch (err) {
       this.error.set(this.toMessage(err as HttpErrorResponse));
     }

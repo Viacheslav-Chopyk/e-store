@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { selectCartItemCount } from '../../store/cart/cart.selectors';
 import {Router, RouterLink} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {ERoutes} from '../../models/routes';
 import {NzHeaderComponent} from 'ng-zorro-antd/layout';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
 import {NzIconDirective} from 'ng-zorro-antd/icon';
@@ -25,10 +26,11 @@ export class HeaderComponent {
   private store = inject(Store);
   private router = inject(Router);
   authService = inject(AuthService);
+  readonly ERoutes = ERoutes;
   cartItemCount = this.store.selectSignal(selectCartItemCount);
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/', ERoutes.Login]);
   }
 }
