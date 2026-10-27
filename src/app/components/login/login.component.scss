@@ -1,6 +1,10 @@
 .login-container {
   display: flex;
   justify-content: center;
+  // The header is hidden for guests, so the login page fills the whole screen; center the card vertically in it.
+  align-items: center;
+  min-height: 100dvh;
+  box-sizing: border-box;
   padding: 40px 16px;
 }
 
