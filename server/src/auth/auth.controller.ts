@@ -13,8 +13,10 @@ import {
   ApiBearerAuth,
   ApiConflictResponse,
   ApiTags,
+  ApiTooManyRequestsResponse,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { ThrottlerGuard } from '@nestjs/throttler';
 import { User } from '../users/user.entity.js';
 import { UsersService } from '../users/users.service.js';
 import { AuthGuard } from './auth.guard.js';
@@ -34,7 +36,9 @@ export class AuthController {
 
   /** Create an account and get a token right away */
   @Post('register')
+  @UseGuards(ThrottlerGuard)
   @ApiBadRequestResponse({ description: 'Validation failed' })
+  @ApiTooManyRequestsResponse({ description: 'Too many attempts' })
   @ApiConflictResponse({ description: 'Email is already taken' })
   register(@Body() dto: RegisterDto): Promise<AuthResponse> {
     return this.authService.register(dto);
@@ -43,7 +47,9 @@ export class AuthController {
   /** Exchange email + password for a token */
   @Post('login')
   @HttpCode(HttpStatus.OK)
+  @UseGuards(ThrottlerGuard)
   @ApiUnauthorizedResponse({ description: 'Invalid email or password' })
+  @ApiTooManyRequestsResponse({ description: 'Too many attempts' })
   login(@Body() dto: LoginDto): Promise<AuthResponse> {
     return this.authService.login(dto);
   }

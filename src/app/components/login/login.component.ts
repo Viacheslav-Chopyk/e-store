@@ -77,7 +77,8 @@ export class LoginComponent {
 
   private async send() {
     const { name, email, password } = this.model();
-    this.error.set(null);
+    // Keep the previous error visible while the request is in flight: hiding it would shrink the card
+    // and make it jump. It is replaced by the next error, or goes away with the page on success.
     try {
       await firstValueFrom(
         this.mode() === 'login'

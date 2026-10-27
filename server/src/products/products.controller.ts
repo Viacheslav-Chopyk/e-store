@@ -15,7 +15,7 @@ import {
   ApiBadRequestResponse,
   ApiBearerAuth,
   ApiNotFoundResponse,
-  ApiTags,
+  ApiTags, ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { PaginatedProducts } from './dto/paginated-products.dto.js';
 import { QueryProductsDto } from './dto/query-products.dto.js';
@@ -29,6 +29,9 @@ import {CreateProductDto} from './dto/create-product.dto.js';
 
 @ApiTags('products')
 @Controller('products')
+@UseGuards(AuthGuard)
+@ApiBearerAuth()
+@ApiUnauthorizedResponse({ description: 'Missing or invalid token' })
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
@@ -47,8 +50,7 @@ export class ProductsController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  @UseGuards(AuthGuard, RolesGuard)
-  @ApiBearerAuth()
+  @UseGuards(RolesGuard)
   @Roles([ERole.Admin])
   @ApiNotFoundResponse({ description: 'Product not found' })
   delete(@Param('id', ParseIntPipe) id: number): Promise<void> {
@@ -56,8 +58,7 @@ export class ProductsController {
   }
 
   @Post()
-  @UseGuards(AuthGuard, RolesGuard)
-  @ApiBearerAuth()
+  @UseGuards(RolesGuard)
   @Roles([ERole.Admin])
   create(@Body() dto:CreateProductDto):Promise<Product> {
     return this.productsService.createProduct(dto)
