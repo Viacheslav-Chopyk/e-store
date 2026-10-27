@@ -4,6 +4,8 @@ import { Repository } from 'typeorm';
 import { PaginatedProducts } from './dto/paginated-products.dto.js';
 import { QueryProductsDto } from './dto/query-products.dto.js';
 import { Product } from './product.entity.js';
+import {CreateProductDto} from './dto/create-product.dto.js';
+import {UpdateProductDto} from './dto/update-product.dto.js';
 
 @Injectable()
 export class ProductsService {
@@ -52,5 +54,16 @@ export class ProductsService {
     if (!result.affected) {
       throw new NotFoundException(`Product ${id} not found`);
     }
+  }
+
+  createProduct(dto: CreateProductDto): Promise<Product> {
+    const product = this.productsRepository.create(dto);
+    return this.productsRepository.save(product);
+  }
+
+  async updateProduct(id:number, dto: UpdateProductDto): Promise<Product> {
+    const product = await this.findOne(id);
+    Object.assign(product, dto);
+    return this.productsRepository.save(product);
   }
 }

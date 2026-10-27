@@ -2,12 +2,14 @@ import {
   Controller,
   Delete,
   Get,
+  Post,
   HttpCode,
   HttpStatus,
   Param,
   ParseIntPipe,
   Query,
   UseGuards,
+  Body
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -23,6 +25,7 @@ import { AuthGuard } from '../auth/auth.guard.js';
 import { Roles } from '../auth/roles.decorator.js';
 import { ERole } from '../users/role.enum.js';
 import { RolesGuard } from '../auth/roles.guard.js';
+import {CreateProductDto} from './dto/create-product.dto.js';
 
 @ApiTags('products')
 @Controller('products')
@@ -50,5 +53,13 @@ export class ProductsController {
   @ApiNotFoundResponse({ description: 'Product not found' })
   delete(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.productsService.removeItem(id);
+  }
+
+  @Post()
+  @UseGuards(AuthGuard, RolesGuard)
+  @ApiBearerAuth()
+  @Roles([ERole.Admin])
+  create(@Body() dto:CreateProductDto):Promise<Product> {
+    return this.productsService.createProduct(dto)
   }
 }
